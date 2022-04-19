@@ -1,11 +1,8 @@
 <?php
-if ( !$user ) {
+
+if ( !$user || $role != 'admin') {
   header( 'Location: ../index.php' );
   die();
 }
 
-if ( $role != 'admin' ) {
-  header( 'Location: ../index.php' );
-  die();
-}
 ?>

@@ -1,7 +1,7 @@
 <?php 
     require 'database.php';
-    if(!isset($_GET)) {
-        header('Location: index.php');
+    if(!isset($_GET['email'])) {
+        header('Location: ../index.php');
         die();
     }
     $email = $_GET['email'];

@@ -1,0 +1,91 @@
+.main-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.navigation {
+  flex: 2;
+}
+
+.main-content {
+  flex: 11;
+}
+
+:root {
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+.navigation {
+  height: 100%;
+  background: #2a2185;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 0 32px;
+  gap: 25px;
+}
+
+.navigation .admin-link:first-child {
+  margin-bottom: 32px;
+  pointer-events: none;
+}
+
+.navigation .admin-link {
+  padding: 1.5em 1.25em;
+  border-radius: 100vh 0 0 100vh;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.admin-link .icon {
+  font-size: 1.35em;
+}
+
+.admin-link .title {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.admin-link .page-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.navigation .admin-link::before,
+.navigation .admin-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px #fff;
+  opacity: 0;
+}
+
+.navigation .admin-link::after{
+  top: unset;
+  bottom: -50px;
+  box-shadow: 35px -35px 0 10px #fff;
+}
+
+.navigation .admin-link:hover {
+  background: #fff;
+  color: #2a2185;
+}
+
+.navigation .admin-link:hover::before,
+.navigation .admin-link:hover::after {
+  opacity: 1;
+}
