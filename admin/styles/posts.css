@@ -1,0 +1,64 @@
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.field-names p:last-child {
+  justify-self: end;
+}
+
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.posts-header .button-wrapper {
+  width: fit-content;
+}
+
+.posts-header .button-wrapper .new-post-button {
+  border-radius: 10px;
+  background-color: #346aff;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+.single-post {
+    align-items: center;
+    background-color: #eee;
+    border-radius: inherit;
+    padding: 1em;
+}
+
+.single-post .post-body {
+    line-height: 1.4em;
+    height: 3em;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.view {
+  background: #346aff;
+}
+
+.edit {
+  background: #ffc107;
+}
+.delete {
+  background: #ff3404;
+}
+
+.view:hover {
+  background: #0057b8;
+}
+
+.edit:hover {
+  background: #ffd600;
+}
+.delete:hover {
+  background: #c52400;
+}

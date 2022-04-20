@@ -28,8 +28,8 @@
         $invalidFile = true;
       }
     } else {
-      $target_dir = "userImages/default.png";
       $file_name = "default";
+      $file_ext = "png";
     }
 
     if ( !$invalidFile ) {
@@ -38,7 +38,7 @@
 
       $query = "INSERT INTO
             users(name, surname, email, username, password, picture)
-                VALUES('$name', '$surname', '$email', '$username', '$password', '$file_name')";
+                VALUES('$name', '$surname', '$email', '$username', '$password', '$file_name.$file_ext')";
       if ( mysqli_query( $conn, $query ) ) {
         header( "Location: login.php" );
       } else {

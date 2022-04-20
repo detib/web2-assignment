@@ -146,7 +146,7 @@ const validateInputs = () => {
    * and the form can be submitted
    *
    */
-  console.log(emailDisable + ' ' + usernameDisable + ' ' + passwordDisable);
+  // console.log(emailDisable + ' ' + usernameDisable + ' ' + passwordDisable);
   if (emailDisable || usernameDisable || passwordDisable) {
     submit.disabled = true;
   } else {
