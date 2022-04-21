@@ -1,7 +1,9 @@
 <?php require 'config/session.php'; ?>
 
 <nav>
-    <h1>BlogApp</h1>
+    <a href="index.php">
+        <h1>BlogApp</h1>
+    </a>
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="about.php">About</a></li>

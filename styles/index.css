@@ -1,0 +1,161 @@
+.main-posts-container {
+  width: 750px;
+  margin: 75px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.main-posts-container .single-post {
+  padding-top: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main-posts-container > .single-post + .single-post {
+  border-top: 2px solid #ccc;
+}
+
+.single-post .single-post-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.single-post .single-post-header .date-created {
+  font-size: 14px;
+  color: #828282;
+}
+
+.single-post .single-post-header .post-title-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.single-post .single-post-header .post-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000555;
+}
+
+.single-post .single-post-header .post-category {
+  font-size: 14px;
+  color: #828282;
+}
+
+.single-post .image-container,
+.single-post .image-container img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.single-post .single-post-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.single-post .discussions-button-wrapper {
+  width: fit-content;
+}
+
+.single-post .discussions-button-wrapper .discussions-button {
+  font-size: 17px;
+  font-weight: 600;
+  color: #57a3e8;
+  border-radius: 5px;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.single-post .discussions-button-wrapper:hover .discussions-button {
+  color: #333;
+}
+
+/*
+
+These styles are for the single post page
+
+*/
+
+.single-post-page {
+    padding-bottom: 100px;
+}
+
+.single-post-page .single-post {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+.comment-container .user-data-comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.comment-container .user-data-comment .user-name {
+    flex: 1;
+}
+
+.add-comment-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.user-image-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.comment-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-form textarea {
+  resize: vertical !important;
+}
+
+.comment-form input[type='submit'] {
+    cursor: pointer;
+  align-self: flex-start;
+  border: none;
+  outline: none;
+  padding: 1em 2em;
+  border-radius: 10px;
+  color: #fff;
+  background: #346aff;
+  transition: 0.3s;
+}
+
+.comment-form input[type='submit']:hover {
+    background: #2550c7;
+}
+
+.single-post-page .post-comments,
+.single-post-page .post-comments .comment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.single-post-page .post-comments > .comment-container {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 15px;
+}
+

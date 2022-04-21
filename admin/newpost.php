@@ -4,6 +4,57 @@
   require '../config/session.php';
   require 'admin.php';
 
+  $allowedExtensions = ['jpg', 'jpeg', 'png'];
+  $invalidFile = false;
+
+  if ( isset( $_POST['submit'] ) ) {
+
+    $subtitles = $_POST['subtitle'];
+    $paragraphs = $_POST['paragraph'];
+    $paragraphs = array_map(
+      function ( $item ) {
+
+        $item = nl2br( $item );
+        return str_replace( "<br />", "^%break%^", $item );
+      }, $paragraphs );
+    $subtitles = implode( '^%implode%^', $subtitles );
+    $paragraphs = trim( implode( '^%implode%^', $paragraphs ) );
+
+    $body = htmlentities( mysqli_real_escape_string( $conn, "$subtitles *%^sp^%* $paragraphs" ) );
+    $title = htmlentities( mysqli_real_escape_string( $conn, $_POST['title'] ) );
+    $category = htmlentities( mysqli_real_escape_string( $conn, $_POST['category'] ) );
+
+    // echo $body;
+    if ( $_FILES['post-image']['error'] == 0 ) {
+      // get the file uploaded from the form submission
+      $file_name = $_FILES['post-image']['name'];
+      $file_tmp = $_FILES['post-image']['tmp_name'];
+      $file_ext = explode( '.', $file_name );
+      $file_ext = strtolower( end( $file_ext ) );
+
+      // generate id for the image to store in the database and access it with that id
+      $file_name = "post-img-" . substr( base64_encode( sha1( mt_rand() ) ), 0, 20 );
+      $target_dir = "../postImages/$file_name.$file_ext";
+      if ( in_array( $file_ext, $allowedExtensions ) ) {
+        move_uploaded_file( $file_tmp, $target_dir );
+      } else {
+        $invalidFile = true;
+      }
+    } else {
+      $file_name = NULL;
+    }
+
+    if ( !$invalidFile ) {
+      $sql = $file_name ?
+      "INSERT INTO posts (title, body, category, post_image) VALUES ('$title', '$body', '$category', '$file_name.$file_ext')" :
+      "INSERT INTO posts (title, body, category) VALUES ('$title', '$body', '$category')";
+      if ( !mysqli_query( $conn, $sql ) ) {
+        echo 'Error: ' . mysqli_error( $conn );
+      }
+      header( 'Location: index.php' );
+    }
+
+  }
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +67,12 @@
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="styles/adminmain.css">
     <link rel="stylesheet" href="styles/newpost.css">
+    <!-- font-awesome icons used in admin sidebar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css"
         integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
+    <script src="js/newpost.js" defer></script>
     <title>Admin Dashboard - New Post</title>
 </head>
 
@@ -27,57 +80,6 @@
     <div class="main-wrapper">
         <?php include 'inc/nav.php' ?>
         <div class="main-content">
-            <?php
-              $allowedExtensions = ['jpg', 'jpeg', 'png'];
-              $invalidFile = false;
-
-              if ( isset( $_POST['submit'] ) ) {
-                // print_r($_POST);
-
-                $subtitles = $_POST['subtitle'];
-                $paragraphs = $_POST['paragraph'];
-                $subtitles = implode( ',', $subtitles );
-                $paragraphs = implode( ',', $paragraphs );
-
-                $body = htmlentities( mysqli_real_escape_string( $conn, "$subtitles ** $paragraphs" ) );
-                $title = htmlentities( mysqli_real_escape_string( $conn, $_POST['title'] ) );
-                $category = htmlentities( mysqli_real_escape_string( $conn, $_POST['category'] ) );
-
-                // echo $body;
-                if ( $_FILES['post-image']['error'] == 0 ) {
-                  // get the file uploaded from the form submission
-                  $file_name = $_FILES['post-image']['name'];
-                  $file_tmp = $_FILES['post-image']['tmp_name'];
-                  $file_ext = explode( '.', $file_name );
-                  $file_ext = strtolower( end( $file_ext ) );
-
-                  // generate id for the image to store in the database and access it with that id
-                  $file_name = "post-img-" . substr( base64_encode( sha1( mt_rand() ) ), 0, 20 );
-                  $target_dir = "../postImages/$file_name.$file_ext";
-                  if ( in_array( $file_ext, $allowedExtensions ) ) {
-                    move_uploaded_file( $file_tmp, $target_dir );
-                  } else {
-                    $invalidFile = true;
-                  }
-                } else {
-                  $file_name = NULL;
-                }
-
-                if ( !$invalidFile ) {
-                  $sql = $file_name ? 
-                    "INSERT INTO posts (title, body, category, post_image) VALUES ('$title', '$body', '$category', '$file_name.$file_ext')" : 
-                    "INSERT INTO posts (title, body, category) VALUES ('$title', '$body', '$category')";
-                  if ( !mysqli_query( $conn, $sql ) ) {
-                    echo 'Error: ' . mysqli_error( $conn );
-                  }
-                }
-
-                $d = explode( "**", $body );
-                $s = explode( ",", $d[0] );
-                $p = explode( ",", $d[1] );
-              }
-
-            ?>
             <h1 class="admin-title">New Post</h1>
             <div class="dashboard-box">
                 <form class="new-post-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post"
@@ -119,7 +121,7 @@
                     </div>
                     <div class="input-field">
                         <label for="image">Image</label>
-                        <input type="file" name="post-image" id="image">
+                        <input type="file" name="post-image" id="image" required>
                     </div>
                     <div class="submit-field">
                         <input name="submit" type="submit" value="Create Post">

@@ -1,6 +1,16 @@
+.main-wrapper {
+  --sidebar-width: 250px;
+}
+
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.grid-layout > * {
+  min-width: 100px;
+  max-width: 175px;
 }
 
 .field-names p:last-child {
@@ -26,19 +36,10 @@
 }
 
 .single-post {
-    align-items: center;
-    background-color: #eee;
-    border-radius: inherit;
-    padding: 1em;
-}
-
-.single-post .post-body {
-    line-height: 1.4em;
-    height: 3em;
-    overflow: hidden;
-    white-space: normal;
-    text-overflow: ellipsis;
-    width: 100%;
+  align-items: center;
+  background-color: #eee;
+  border-radius: inherit;
+  padding: 1.5em 1em;
 }
 
 .view {

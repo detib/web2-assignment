@@ -1,10 +1,10 @@
 /*
- *  
+ *
  * use a query selector to get the elements inside .navigation with the class
  *      of admin-link.
  * That gives us a HTML collection, we spread it into an array with the spreader
  *    operator.
- * 
+ *
  */
 const list = [...document.querySelectorAll('.navigation .admin-link')];
 list.shift(); // remove first element, title, we do not need it for the hover effect.
@@ -30,31 +30,17 @@ switch (fileLocation) {
     break;
 }
 
+const textareas = [...document.querySelectorAll('textarea')];
 
-const htmlFormMarkup = `
-    <div class="body-sub-title-paragraph">
-        <div class="input-field">
-            <label for="title">Sub Title</label>
-            <input type="text" name="subtitle[]" id="title" required>
-        </div>
-        <div class="input-field">
-            <label for="paragraph">Paragraph</label>
-            <textarea name="paragraph[]" id="paragraph" required></textarea>
-        </div>
-    </div>`
+const changeHeightOnLoad = (item) => {
+  item.style.height = `${item.scrollHeight}px`;
+};
 
-const addFieldButton = document.getElementById('add-another-field');
-const formFields = document.getElementById('body-fields-wrapper');
-addFieldButton.addEventListener('click', () => {
-  const div = document.createElement('div');
-  div.innerHTML = htmlFormMarkup.trim();
-  formFields.appendChild(div.firstElementChild);
-})
+const changeHeightOnInput = (e) => {
+  e.target.style.height = `${e.target.scrollHeight}px`;
+};
 
-removeFieldButton = document.getElementById('remove-field');
-removeFieldButton.addEventListener('click', () => {
-  const lastChild = formFields.lastElementChild;
-  if (lastChild && formFields.children.length > 1) {
-    formFields.removeChild(lastChild);
-  }
-})
+textareas.forEach((textarea) => {
+  changeHeightOnLoad(textarea);
+  textarea.addEventListener('keydown', changeHeightOnInput);
+});

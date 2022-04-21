@@ -24,21 +24,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
     <title>Admin Dashboard - Posts</title>
-    <script>
-    const parseText = function(text, limit) {
-        if (text.length > limit) {
-            for (let i = limit; i > 0; i--) {
-                if (text.charAt(i) === ' ' && (text.charAt(i - 1) != ',' || text.charAt(i - 1) != '.' || text
-                        .charAt(i - 1) != ';')) {
-                    return text.substring(0, i) + ' . . .';
-                }
-            }
-            return text.substring(0, limit) + ' . . .';
-        } else
-            return text;
-    };
-    
-    </script>
 </head>
 
 <body>
@@ -58,19 +43,30 @@
                     <p>Body</p>
                     <p>Category</p>
                     <p>Date Created</p>
+                    <p>Edit Date</p>
                     <p>Comments</p>
                     <p>Actions</p>
                 </div>
-                <?php foreach ( $posts as $post ): ?>
+                <?php foreach ( $posts as $post ): 
+                    
+                        $postBody = explode("*%^sp^%*",$post['body']);
+                        $postSubArticleCount = count(explode("^%implode%^", $postBody[0]));
+                    ?>
                 <div class="single-post grid-layout">
                     <h3 class="post-title"><?php echo $post['title']; ?></h3>
-                    <p class="post-body"><script>document.write(parseText('<?php echo $post['body']; ?>', 55))</script></p>
+                    <p class="post-body">Sub Articles: <?php echo $postSubArticleCount; ?></p>
                     <p class="post-category"><?php echo $post['category']; ?></p>
                     <p class="post-comments"><?php echo $post['date'] ?></p>
-                    <p class="post-comments">1</p>
+                    <p class="post-comments"><?php echo $post['edit_date'] ?></p>
+                    <p class="post-comments"><?php 
+                        $query = "SELECT * FROM comments WHERE post_id = {$post['id']}";
+                        $result = mysqli_query( $conn, $query );
+                        $comments = mysqli_fetch_all( $result, MYSQLI_ASSOC );
+                        echo count( $comments );
+                    ?></p>
                     <div class="button-actions">
                         <div class="button-action-wrapper">
-                            <a class="button-action view" href="config/post.php?post=<?php echo $post['id'] ?>">View</a>
+                            <a class="button-action view" href="../single-post.php?id=<?php echo $post['id'] ?>">View</a>
                         </div>
                         <div class="button-action-wrapper">
                             <a class="button-action edit" href="editpost.php?post=<?php echo $post['id'] ?>">Edit</a>

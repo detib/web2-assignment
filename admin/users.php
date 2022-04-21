@@ -58,12 +58,12 @@
                         <?php if ( $user['is_active'] == 0 ): ?>
                         <div class="button-action-wrapper">
                             <a class="button-action approve"
-                                href="config/approve.php?user=<?php echo $user['username'] ?>">Approve</a>
+                                href="config/approveuser.php?user=<?php echo $user['username'] ?>">Approve</a>
                         </div>
                         <?php endif; ?>
                         <div class="button-action-wrapper">
                             <a class="button-action delete"
-                                href="config/delete.php?user=<?php echo $user['username'] ?>">Delete</a>
+                                href="config/deleteuser.php?user=<?php echo $user['username'] ?>">Delete</a>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@
         $username = $user['username'];
         $password = $user['password'];
         $role = $user['role'] ? 'admin' : 'user';
+        $picture = $user['picture'];
     } else {
         $user = null;
     }
