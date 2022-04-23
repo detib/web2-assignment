@@ -1,8 +1,8 @@
 <?php
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "blog");
+    define("DB_HOST", "remotemysql.com");
+    define("DB_USER", "xx9tjDv0Fg");
+    define("DB_PASS", "MuzHmV4ZdO");
+    define("DB_NAME", "xx9tjDv0Fg");
     
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
