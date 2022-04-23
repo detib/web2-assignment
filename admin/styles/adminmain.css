@@ -1,6 +1,6 @@
 .main-wrapper {
   min-height: 100%;
-  --sidebar-width: 350px;
+  --sidebar-width: 275px;
 }
 
 .main-content {
@@ -21,8 +21,7 @@
   bottom: 0;
   position: fixed;
   width: var(--sidebar-width);
-  background: #2a2185;
-  transition: 0.5s;
+  background-image: linear-gradient(to bottom, #0a2754, #0a2b5e, #093069, #093473, #09397e, #0a3d87, #0b4190, #0d4599, #0f49a2, #104eaa, #1252b3, #1357bc);
   display: flex;
   flex-direction: column;
   padding: 32px 0 0 32px;
@@ -31,8 +30,7 @@
 }
 
 .navigation .admin-link:first-child {
-  margin-bottom: 32px;
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .navigation .admin-link {
@@ -47,17 +45,26 @@
 }
 
 .admin-link .icon {
-  font-size: 1.35em;
+  font-size: 1.5em;
+  margin-left: 17.5px;
+}
+
+.admin-link .main-icon {
+  font-size: 2em;
+  margin: 0;
 }
 
 .admin-link .title {
-  font-size: 1.1em;
+  font-size: 1em;
+  margin-left: 5px;
   font-weight: 600;
 }
 
 .admin-link .page-title {
-  font-size: 1.5em;
-  font-weight: 700;
+  font-family: 'Fjalla One', sans-serif;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 100;
   letter-spacing: 2px;
 }
 
@@ -82,7 +89,7 @@
 }
 
 .navigation .admin-link:hover {
-  background: linear-gradient(to right, #fff, #e0e0e0);
+  background: linear-gradient(to right, #c1daff, #e0e0e0);
   color: #2a2185;
 }
 
@@ -92,7 +99,7 @@
 }
 
 .navigation .active {
-  background: linear-gradient(to right, #fff, #e0e0e0) !important;
+  background: linear-gradient(to right, #c1daff, #e0e0e0) !important;
   color: #2a2185 !important;
 }
 

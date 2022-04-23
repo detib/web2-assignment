@@ -55,11 +55,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> Main pi prish dukjen e nav edhe footer qata e heka prej faqeve kryesore-->
     <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/inc.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/register.js" defer></script>
-    <title>BlogApp - Register</title>
+    <title>Coder | Register</title>
 </head>
 
 <body>
@@ -75,14 +76,14 @@
                 <div class='form-field'>
                     <label for='name'>Name</label>
                     <div class='signup-input-field'>
-                        <input required type='text' placeholder='Type your Name here' id='name' name="name"
+                        <input required type='text' placeholder='Type Your Name Here' id='name' name="name"
                             value="<?php echo isset( $_POST['name'] ) ? $_POST['name'] : '' ?>" />
                     </div>
                 </div>
                 <div class='form-field'>
                     <label for='surname'>Surname</label>
                     <div class='signup-input-field'>
-                        <input required type='text' placeholder='Type your Surname here' id='surname' name="surname"
+                        <input required type='text' placeholder='Type Your Surname Here' id='surname' name="surname"
                             value="<?php echo isset( $_POST['surname'] ) ? $_POST['surname'] : '' ?>" />
                     </div>
                 </div>
@@ -90,7 +91,7 @@
             <div class='form-field'>
                 <label for='email'>Email</label>
                 <div class='signup-input-field'>
-                    <input required type='text' placeholder='Type your Email here' id='email' name="email"
+                    <input required type='text' placeholder='Type Your Email Here' id='email' name="email"
                         value="<?php echo isset( $_POST['email'] ) ? $_POST['email'] : '' ?>" />
                 </div>
             </div>
@@ -101,37 +102,38 @@
                 <div class='form-field'>
                     <label for='username'>Username</label>
                     <div class='signup-input-field'>
-                        <input required type='text' placeholder='Type your Username here' id='username' name="username"
+                        <input required type='text' placeholder='Type Your Username Here' id='username' name="username"
                             value="<?php echo isset( $_POST['username'] ) ? $_POST['username'] : '' ?>" />
                     </div>
                 </div>
                 <div class='form-field'>
                     <label for='password'>Password</label>
                     <div class='signup-input-field'>
-                        <input required type='password' placeholder='Type password here' id='password' name="password"
+                        <input required type='password' placeholder='Type Password Here' id='password' name="password"
                             value="<?php echo isset( $_POST['password'] ) ? $_POST['password'] : '' ?>" />
                     </div>
                 </div>
             </div>
             <div style="display: none;" id="username-exists">
-                <p style="color: red; font-weight: 600;">Username already exists</p>
+                <p style="color: red; font-weight: 600;">Username already exists.</p>
             </div>
             <div style="display: none;" id="password-error">
                 <p style="color: red; font-weight: 600;">Password should be 8 characters long, 1 uppercase letter, 1
-                    number</p>
+                    number.</p>
             </div>
             <div class='form-field'>
                 <label for='profile'>Add Profile Picture</label>
                 <div class='signup-input-field'>
-                    <input name="profile" type='file' placeholder='Type your profile here' id='profile' />
+                    <input name="profile" type='file' placeholder='Type Your Profile Here' id='profile' />
                 </div>
             </div>
             <?php if ( $invalidFile ): ?>
-            <p style="color: red; font-weight: 600;">Invalid file type</p>
+            <p style="color: red; font-weight: 600;">Invalid file type.</p>
             <?php endif; ?>
             <input name="submit" type='submit' value='Sign Up' id="submit" />
         </form>
     </div>
+    <?php include 'inc/footer.php' ?>
 </body>
 
 </html>

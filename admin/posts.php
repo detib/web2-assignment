@@ -23,7 +23,7 @@
     integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
-    <title>Admin Dashboard - Posts</title>
+    <title>Admin Dashboard | Posts</title>
 </head>
 
 <body>
@@ -57,7 +57,11 @@
                     <p class="post-body">Sub Articles: <?php echo $postSubArticleCount; ?></p>
                     <p class="post-category"><?php echo $post['category']; ?></p>
                     <p class="post-comments"><?php echo $post['date'] ?></p>
-                    <p class="post-comments"><?php echo $post['edit_date'] ?></p>
+                    <p class="post-comments"><?php 
+                    
+                    echo ( $post['edit_date'] != $post['date'] ) ? $post['edit_date'] : 'No edits';
+                    
+                    ?></p>
                     <p class="post-comments"><?php 
                         $query = "SELECT * FROM comments WHERE post_id = {$post['id']}";
                         $result = mysqli_query( $conn, $query );

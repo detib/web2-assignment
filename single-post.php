@@ -33,14 +33,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> Main pi prish dukjen e nav edhe footer qata e heka prej faqeve kryesore-->
     <link rel="stylesheet" href="styles/index.css">
-    <title>Blog App Post</title>
+    <link rel="stylesheet" href="styles/inc.css">
+    <title>Coder | Post</title>
 </head>
 
 <body>
     <?php include 'inc/navbar.php' ?>
-    <div class="main-posts-container single-post-page">
+    <div class="single-post-page">
         <div class="single-post">
             <div class="single-post-header">
                 <p class="date-created"><?php echo date("d-M-y",strtotime($post['date'])); ?></p>
@@ -71,6 +72,15 @@
             </div>
         </div>
         <div class="post-comments">
+            <div class="post-comments-title">
+                <?php 
+                    $postId = $post['id'];
+                    $query = "SELECT * FROM comments WHERE post_id = $postId";
+                    $result = mysqli_query($conn, $query);
+                    $result = mysqli_num_rows($result);
+                    echo $result;
+                ?> Comments
+            </div>
             <?php if ( $user ): ?>
             <div class="add-comment-container">
                 <div class="user-image-container">
@@ -125,7 +135,8 @@
             <p class="no-comments">No comments yet</p>
             <?php endif; ?>
         </div>
-        <!--<?php include 'inc/footer.php' ?> -->
+    </div>
+    <?php include 'inc/footer.php' ?>
 </body>
 
 </html>

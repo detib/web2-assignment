@@ -1,9 +1,9 @@
 <div class="navigation">
     <a class="admin-link" href="#">
-        <span class="icon">
-            <i class="fa-brands fa-blogger-b"></i>
+        <span class="main-icon">
+            <i class="fa-solid fa-code"></i>
         </span>
-        <span class="title page-title">BlogApp</span>
+        <span class="title page-title">CODER</span>
     </a>
     <a class="admin-link" href="index.php">
         <span class="icon">

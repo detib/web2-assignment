@@ -1,20 +1,63 @@
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.grid-layout > *, .field-names > *, .single-new-post > * {
+  min-width: 100px;
+}
+
+.field-names {
+  gap: 15px;
+  overflow-x: auto;
 }
 
 .view-more-wrapper {
   width: fit-content;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .view-more-wrapper a {
   border-radius: 10px;
-  background-color: #346aff;
+  background-color: #1357bc;
   padding: 1em;
   width: 100%;
   height: 100%;
   color: #fff;
+  transition: .3s;
+}
+
+.view-more-wrapper a:hover {
+  background-color: #1d68da;
+  width: fit-content;
+}
+
+.view-post {
+  padding: .75em;
+  transition: .3s;
+  border-radius: 10px;
+  color: #fff;
+  background: #1357bc;
+}
+
+.view-post:hover {
+  background: #1d68da;
+}
+
+.single-new-user {
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.user-name, .user-surname, .user-email, .user-username {
+  overflow-x: auto;
+}
+
+.single-new-user .profile-picture img {
+  width: 60px;
+  margin-left: 2em;
 }
 
 .single-new-post {
@@ -24,9 +67,19 @@
   background-color: #eee;
   border-radius: inherit;
   padding: 1.5em 1em;
+  gap: 15px;
+  overflow-x: auto;
 }
 
 .single-post-names {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+.single-post-names p:nth-child(6) {
+  margin-left: 10px;
+}
+
+.post-comments-number {
+  margin-left: 10px;
 }
