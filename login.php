@@ -36,10 +36,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> Main pi prish dukjen e nav edhe footer qata e heka prej faqeve kryesore-->
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/inc.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogApp - Login</title>
+    <title>Coder | Login</title>
 </head>
 
 <body>
@@ -48,20 +49,20 @@
     <div class='login-box'>
         <div class='form-title'>
             <h6>Log In</h6>
-            <p>Log In using the information you registered with</p>
+            <p>Log in using the information you registered with</p>
         </div>
         <?php if ( !$accountActiveError ): ?>
         <form method="post" action='<?php echo $_SERVER['PHP_SELF'] ?>' class='login-form'>
             <div class='form-field'>
                 <label htmlFor='login-email'>Username</label>
                 <div class='login-input-field'>
-                    <input name="username" type='text' placeholder='Type Username here' id='login-email' value="<?php if($accountError== "Wrong password.") echo $_POST['username']?>"/>
+                    <input name="username" type='text' placeholder='Type Username Here' id='login-email' value="<?php if($accountError== "Wrong password.") echo $_POST['username']?>"/>
                 </div>
             </div>
             <div class='form-field'>
                 <label htmlFor='login-password'>Password</label>
                 <div class='login-input-field'>
-                    <input name="password" type='password' placeholder='Type password here' id='login-password' />
+                    <input name="password" type='password' placeholder='Type Password Here' id='login-password' />
                 </div>
             </div>
             <?php if($accountError):?>
@@ -81,6 +82,7 @@
         </div>
         <?php endif; ?>
     </div>
+    <?php include 'inc/footer.php' ?>
 </body>
 
 </html>

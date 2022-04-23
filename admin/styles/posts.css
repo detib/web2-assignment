@@ -1,20 +1,20 @@
 .main-wrapper {
-  --sidebar-width: 250px;
+  --sidebar-width: 275px;
 }
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 15px;
+  overflow-x: auto;
 }
 
 .grid-layout > * {
   min-width: 100px;
-  max-width: 175px;
 }
 
-.field-names p:last-child {
-  justify-self: end;
+.button-actions {
+  width: fit-content;
 }
 
 .posts-header {
@@ -28,38 +28,48 @@
 
 .posts-header .button-wrapper .new-post-button {
   border-radius: 10px;
-  background-color: #346aff;
+  background-color: #1357bc;
   padding: 1em;
   width: 100%;
   height: 100%;
   color: #fff;
+  transition: .3s;
+}
+
+.posts-header .button-wrapper .new-post-button:hover {
+  background-color: #1d68da;
 }
 
 .single-post {
   align-items: center;
   background-color: #eee;
   border-radius: inherit;
-  padding: 1.5em 1em;
+  padding: 1em;
+}
+
+.view, .edit, .delete {
+  padding: .75em;
+  transition: .3s;
 }
 
 .view {
-  background: #346aff;
+  background: #1357bc;
 }
 
 .edit {
   background: #ffc107;
 }
 .delete {
-  background: #ff3404;
+  background: #e4360f;
 }
 
 .view:hover {
-  background: #0057b8;
+  background: #1d68da;
 }
 
 .edit:hover {
   background: #ffd600;
 }
 .delete:hover {
-  background: #c52400;
+  background: #ff4a22;
 }

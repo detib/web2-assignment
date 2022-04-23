@@ -25,7 +25,7 @@
     integrity="sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
-    <title>Admin Dashboard - Users</title>
+    <title>Admin Dashboard | Users</title>
 </head>
 
 <body>

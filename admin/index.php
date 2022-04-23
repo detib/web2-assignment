@@ -94,13 +94,15 @@
                         echo ( $post['edit_date'] != $post['date'] ) ? $post['edit_date'] : 'No edits';
 
                     ?></p>
-                    <p class="post-comments"><?php
+                    <p class="post-comments post-comments-number"><?php
                         $query = "SELECT * FROM comments WHERE post_id = {$post['id']}";
                         $result = mysqli_query( $conn, $query );
                         $comments = mysqli_fetch_all( $result, MYSQLI_ASSOC );
                         echo count( $comments );
                 ?></p>
-                    <a href="../single-post.php?id=<?php echo $post['id']?>">View Post</a>
+                    <div class="view-post-wrapper">
+                        <a href="../single-post.php?id=<?php echo $post['id']?>" class="view-post">View Post</a>
+                    </div>
                 </div>
                 <?php endforeach; ?>
                 <?php else: ?>

@@ -21,7 +21,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
     <script src="js/newpost.js" defer></script>
-    <title>Admin Dashboard - New Post</title>
+    <title>Admin Dashboard | New Post</title>
 </head>
 
 <body>

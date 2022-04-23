@@ -1,13 +1,20 @@
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+  overflow-x: auto;
 }
 
-.field-names p:last-child {
-    justify-self: end;
+.grid-layout p:first-child, .grid-layout div:first-child {
+  min-width: 150px;
 }
 
+.grid-layout > * {
+  min-width: 100px;
+}
 
+.field-names p:nth-child(5), .field-names p:nth-child(6), .field-names p:last-child, .user-username, .user-date-created, .button-actions {
+  margin-left: 10px;
+}
 
 .all-users {
   background: #dadada;
@@ -19,58 +26,53 @@
   gap: 25px;
 }
 
-.all-users > * + * {
-    margin-top: 20px;
-}
-
 .single-user {
   align-items: center;
   position: relative;
   background: #eee;
   padding: 1em;
   border-radius: inherit;
-  overflow: hidden;
 }
 
-.single-user::after {
-    --height: 7px;
-    content: '';
-    position: absolute;
-    inset: auto 0 0 0;
-    height: var(--height);
-    background: #2a2185;
-    /* border-radius: 100vh; */
-    width: 0;
-    margin: 0 auto;
-    transition: 0.6s;
+.user-name, .user-surname, .user-email, .user-username {
+  overflow-x: auto;
 }
 
-.single-user:hover::after {
-    width: 100%;
-}
-
-.single-user .user-username {
+.user-username {
     font-weight: 600;
 }
 
 .single-user .profile-picture {
   width: 60px;
   height: 60px;
+  padding-left: 2em;
   border-radius: 50%;
 }
 
 .single-user .profile-picture img {
-  width: 100%;
-  height: 100%;
+  width: 60px;
+  height: 60px;
   border-radius: inherit;
 }
 
+.button-actions {
+  width: fit-content;
+}
 
-
+.approve, .delete {
+  padding: .75em;
+  transition: .3s;
+}
 
 .approve {
-  background: #346aff;
+  background-color: #1357bc;
 }
 .delete {
-  background: #ff3404;
+  background-color: #e4360f;
+}
+.approve:hover {
+  background-color: #1d68da;
+}
+.delete:hover {
+  background-color: #ff4a22;
 }

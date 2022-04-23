@@ -73,7 +73,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/adminmain.js" defer></script>
     <script src="js/newpost.js" defer></script>
-    <title>Admin Dashboard - New Post</title>
+    <title>Admin Dashboard | New Post</title>
 </head>
 
 <body>
@@ -113,7 +113,7 @@
                             <option value="">Select a category</option>
                             <option value="html">HTML5</option>
                             <option value="javascript">JavaScript</option>
-                            <option value="php">php</option>
+                            <option value="php">Php</option>
                             <option value="python">Python</option>
                             <option value="java">Java</option>
                             <option value="react">React</option>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="input-field">
                         <label for="image">Image</label>
-                        <input type="file" name="post-image" id="image" required>
+                        <input type="file" name="post-image" id="image">
                     </div>
                     <div class="submit-field">
                         <input name="submit" type="submit" value="Create Post">

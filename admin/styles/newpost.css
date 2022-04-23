@@ -19,14 +19,25 @@
   font-size: 16px;
   letter-spacing: 1px;
   font-weight: 600;
+  margin: 7px 0;
 }
 
 .input-field input {
+  font-size: 1em;
+}
+
+#title {
+  padding: .5em;
+}
+
+#paragraph {
+  padding: .5em;
+}
+
+.input-field textarea {
   font-size: 1.1em;
 }
-.input-field textarea {
-  font-size: 1.05em;
-}
+
 .input-field input:not(input[type='file']),
 .input-field textarea {
   resize: vertical;
@@ -46,16 +57,26 @@
   cursor: pointer;
   user-select: none;
   align-self: flex-start;
-  padding: 1em 1.5em;
+  padding: 1em;
   border: none;
   outline: none;
   border-radius: 15px;
-  background: #1c59ff;
+  background: #1357bc;
   color: #fff;
+  transition: .3s;
 }
 
 .body-buttons .remove-field {
-    background: #ff3404;    
+    background: #e4360f;
+    transition: .3s;    
+}
+
+.add-more-button:hover {
+  background-color: #1d68da;
+}
+
+.remove-field:hover {
+  background: #ff4a22
 }
 
 .select-field select {
@@ -71,9 +92,15 @@
   outline: none;
   cursor: pointer;
   padding: 1em 3em;
-  background-color: #1c59ff;
+  background-color: #1357bc;
   color: #fff;
   border-radius: 15px;
+  font-size: 1em;
+  transition: .3s;
+}
+
+.submit-field input:hover {
+  background: #1d68da;
 }
 
 .body-of-post {
@@ -93,4 +120,9 @@
 
 .body-of-post .body-title {
   font-size: 17px;
+}
+
+#category {
+  padding: 5px;
+  border-radius: 5px;
 }
