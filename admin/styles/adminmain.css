@@ -1,13 +1,13 @@
 /*---------- These styles are for the admin (dashboard pages) ----------*/
 .main-wrapper {
   min-height: 100%;
-  --sidebar-width: 275px; /* we used a variable here */
+  --sidebar-width: 275px; /* we created a variable here because the dashboard navigation bar's width was used continuously so this made it easier to access it */
 }
 
 .main-content {
   min-height: 100vh;
   margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width)); /* removes the navigation bar size from the width of the page so that it can make space for the dashboard navbar */
+  width: calc(100% - var(--sidebar-width)); /* removes the navigation bar size from the width of the page by calculating it automatically so that it can make space for the dashboard navbar */
   padding: calc(1.5em + 32px) 1.5em 1.5em 1.5em;
   background: #e0e0e0;
   z-index: 50; /* used so that the main-content always appears over other elements */
@@ -17,7 +17,8 @@
 }
 
 /*---------- These styles are for the navigation bar in the dashboard pages ----------*/
-
+/* properties like display: flex, flex-direction and so on that were used for the stylization of the main pages
+are used for the same principle in the dashboard pages as well */
 .navigation {
   top: 0;
   left: 0;
@@ -33,7 +34,7 @@
 }
 
 .navigation .admin-link:first-child { /* select the first-child of the parent .admin-link */
-  pointer-events: none;
+  pointer-events: none; /* removes any pointers when user hovers above the title in the navbar */
 }
 
 .navigation .admin-link {
@@ -71,7 +72,9 @@
   letter-spacing: 2px;
 }
 
-/*---------- this section below of the navigation bar is used to create the hover effects that take place when the user hovers over the nav links ----------*/
+/*---------- this section below of the navigation bar is used to create the hover effects that take place when 
+the user hovers over the nav links. ::before selector inserts content before a selected element. 
+::after inserts content after a specified element ----------*/
 .navigation .admin-link::before,
 .navigation .admin-link::after {
   content: '';
@@ -102,6 +105,8 @@
   opacity: 1;
 }
 
+/* when the user access' one of the dashboard pages through the navbar, the hover effect stays activated with 
+the help of javascript and the style below */
 .navigation .active {
   background: linear-gradient(to right, #c1daff, #e0e0e0) !important;
   color: #2a2185 !important;
@@ -112,6 +117,7 @@
   opacity: 1;
 }
 
+/*---------- the styles below belong to the dashboard page, or the index of the admin pages ----------*/
 .small-title {
   color: #000835;
   padding: 10px 0;

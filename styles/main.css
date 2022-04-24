@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
+/* the main css file was initially used on all pages, however when we changed the navigation bar it disrupted our style. 
+so the main css is used on the admin pages, dashboard */
 *,
 *::before,
 *::after {
