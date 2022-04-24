@@ -54,13 +54,13 @@
         <?php if ( !$accountActiveError ): ?>
         <form method="post" action='<?php echo $_SERVER['PHP_SELF'] ?>' class='login-form'>
             <div class='form-field'>
-                <label htmlFor='login-email'>Username</label>
+                <label for='login-email'>Username</label>
                 <div class='login-input-field'>
                     <input name="username" type='text' placeholder='Type Username Here' id='login-email' value="<?php if($accountError== "Wrong password.") echo $_POST['username']?>"/>
                 </div>
             </div>
             <div class='form-field'>
-                <label htmlFor='login-password'>Password</label>
+                <label for='login-password'>Password</label>
                 <div class='login-input-field'>
                     <input name="password" type='password' placeholder='Type Password Here' id='login-password' />
                 </div>

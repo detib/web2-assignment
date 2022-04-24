@@ -15,6 +15,12 @@
 
 .button-actions {
   width: fit-content;
+  grid-column: span 2;
+  justify-self: flex-end;
+}
+
+.post-comments {
+  justify-self: center;
 }
 
 .posts-header {

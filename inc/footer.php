@@ -1,11 +1,4 @@
-<!-- <footer>
-    <p>RIT AUK Project &copy;</p>
-    <ul>
-        <li>Home</li>
-        <li>Login</li>
-        <li>Register</li>
-    </ul>
-</footer> -->
+<!-- This is the footer markup that we use to display the html markup in the pages that we need, we get this through the include function -->
 <footer>
     <div class="footer">
         <div class="about-us-foot">
@@ -15,9 +8,11 @@
         <div class="newsletter">
             <h2>Newsletter</h2>
             <p>Stay up to date:</p>
-            <div class="news-input">
-                <input type="email" name="" placeholder="Email"><span><i class="fas fa-chevron-right"></i></span>
-            </div>
+            <!-- this form submits the email to the newsletter.php file that adds the subscribers email to the newsletter table -->
+            <form class="news-input" method="post" action="config/newsletter.php">
+                <input type="email" name="email" placeholder="Email" required>
+                <button class="newsletter-button" type="submit"><span><i class="fas fa-chevron-right"></i></span></button>
+            </form>
         </div>
         <div class="social">
             <h2>Follow Us</h2>

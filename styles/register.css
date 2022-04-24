@@ -58,7 +58,7 @@
 }
 
 .form-field .signup-input-field:focus-within {
-  outline: 2px solid #1d68da;
+  outline: 2px solid #0a2754;
 }
 
 .signup-form input[type='submit'] {
@@ -67,7 +67,7 @@
   border: none;
   padding: 1em 0;
   border-radius: 100vh;
-  background: #1d68da;
+  background: #134897;
   color: #fff;
   font-size: 16px;
   transition: 1.25s;

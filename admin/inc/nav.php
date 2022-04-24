@@ -1,3 +1,5 @@
+<!-- the sidebar markup that is used in the admin dashboard -->
+<!-- the i tags are for the font-awsome icons that we use on the sidebar -->
 <div class="navigation">
     <a class="admin-link" href="#">
         <span class="main-icon">

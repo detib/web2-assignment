@@ -55,8 +55,14 @@
   border-radius: inherit;
 }
 
+.button-action-wrapper {
+  min-width: unset !important;
+}
+
 .button-actions {
   width: fit-content;
+  grid-column: span 2;
+  justify-self: flex-end;
 }
 
 .approve, .delete {

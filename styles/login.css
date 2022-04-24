@@ -78,7 +78,7 @@
 }
 
 .login-input-field:focus-within {
-  outline: 2px solid #5784ff;
+  outline: 2px solid #0a2754;
 }
 
 .icon-fields {
@@ -100,14 +100,14 @@
   border: none;
   padding: 1em 0;
   border-radius: 100vh;
-  background: #1d68da;
+  background: #134897;
   color: #fff;
   font-size: 16px;
   transition: 1.25s;
 }
 
 .login-form input[type='submit']:hover {
-  box-shadow: inset 700px 0 0 0 rgba(0, 0, 0, 0.1), inset -700px 0 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 800px 0 0 0 rgba(0, 0, 0, 0.1), inset -800px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 @keyframes shake {

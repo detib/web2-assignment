@@ -1,6 +1,3 @@
-<!-- detib - Detideti1 -->
-<!-- admin -->
-
 <?php
 
   require './config/database.php';
@@ -60,8 +57,8 @@
                 <?php
                   $postBody = $post['body'];
                   $postBody = explode( "*%^sp^%*", $postBody );
-                  $postTitles = explode( "^%implode%^", $postBody[0] );
-                  $postParagraphs = explode( "^%implode%^", $postBody[1] );
+                  $postTitles = explode( "^%seperator%^", $postBody[0] );
+                  $postParagraphs = explode( "^%seperator%^", $postBody[1] );
                   foreach ( $postTitles as $key => $value ):
                 ?>
                 <div class="single-post-section">
@@ -89,7 +86,7 @@
                 <form class="comment-form" action="./config/addComent.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <input type="hidden" name="username" value="<?php echo $username; ?>">
-                    <textarea placeholder="Enter your comment..." name="comment" id="" rows="3"></textarea>
+                    <textarea placeholder="Enter your comment..." name="comment" id="" rows="3" required></textarea>
                     <input type="submit" value="Add Comment" name="submit">
                 </form>
             </div>
@@ -111,8 +108,7 @@
                         <img src="userImages/<?php echo $userPicture; ?>" alt="">
                     </div>
                     <p class="user-name"><?php echo $userName; ?></p>
-                    <p class="post-time">
-                        <?php
+                    <p class="post-time"><?php
 
                               $commentTime = strtotime( $comment['time'] );
 
@@ -123,8 +119,8 @@
                                 $commentTime = date( 'H-i : d-M', $commentTime );
                                 echo $commentTime;
                               }
-                            ?>
-                    </p>
+                            
+                    ?></p>
                 </div>
                 <div class="comment-content">
                     <p class="comment-text"><?php echo nl2br($comment['body']); ?></p>

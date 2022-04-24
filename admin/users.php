@@ -42,7 +42,7 @@
                     <p>Email</p>
                     <p>Username</p>
                     <p>Date Created</p>
-                    <p>Actions</p>
+                    <p class="actions-text">Actions</p>
                 </div>
                 <?php foreach ( $users as $user ): ?>
                 <div class="single-user grid-layout">

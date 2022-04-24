@@ -43,8 +43,8 @@
                     $item = nl2br( $item );
                     return str_replace("<br />", "^%break%^", $item);
                   }, $paragraphs );
-                $subtitles = implode( '^%implode%^', $subtitles );
-                $paragraphs = trim(implode( '^%implode%^', $paragraphs ));
+                $subtitles = implode( '^%seperator%^', $subtitles );
+                $paragraphs = trim(implode( '^%seperator%^', $paragraphs ));
 
                 $body = htmlentities( mysqli_real_escape_string( $conn, "$subtitles *%^sp^%* $paragraphs" ) );
                 $title = htmlentities( mysqli_real_escape_string( $conn, $_POST['title'] ) );
@@ -95,18 +95,18 @@
                 $category = $post['category'];
                 $post_image = $post['post_image'];
                 $body = explode("*%^sp^%*", $post['body']);
-                $subtitles = explode( '^%implode%^', $body[0] );
-                $paragraphs = explode( '^%implode%^', $body[1] );
+                $subtitles = explode( '^%seperator%^', $body[0] );
+                $paragraphs = explode( '^%seperator%^', $body[1] );
               } 
 
             ?>
             <h1 class="admin-title">New Post</h1>
             <div class="dashboard-box">
-                <form class="new-post-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post"
+                <form class="new-post-form" action="<?= $_SERVER['PHP_SELF'] ?>" method="post"
                     enctype="multipart/form-data">
                     <div class="input-field">
                         <label class="new-post-title" for="title">Title</label>
-                        <input type="text" name="title" id="title" required value="<?php echo $title;?>">
+                        <input type="text" name="title" id="title" required value="<?= $title;?>">
                     </div>
                     <div class="body-of-post">
                         <h2 class="body-title">Body</h2>
@@ -115,13 +115,13 @@
                             <div class="body-sub-title-paragraph">
                                 <div class="input-field">
                                     <label>Sub Title</label>
-                                    <input value="<?php echo $subtitle?>" type="text" name="subtitle[]" id="title"
+                                    <input value="<?= $subtitle?>" type="text" name="subtitle[]" id="title"
                                         required>
                                 </div>
                                 <div class="input-field">
                                     <label>Paragraph</label>
                                     <textarea name="paragraph[]"
-                                        required><?php echo trim(str_replace("^%break%^", "", $paragraphs[$key]));?></textarea>
+                                        required><?= trim(str_replace("^%break%^", "", $paragraphs[$key]));?></textarea>
                                 </div>
                             </div>
                             <?php endforeach ?>
@@ -149,7 +149,7 @@
                         <input type="file" name="post-image" id="image">
                     </div>
                     <div class="submit-field">
-                        <input type="hidden" name="post-id" value="<?php echo $id?>">
+                        <input type="hidden" name="post-id" value="<?= $id?>">
                         <input name="submit" type="submit" value="Update Post">
                     </div>
                 </form>

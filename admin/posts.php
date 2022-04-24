@@ -45,19 +45,19 @@
                     <p>Date Created</p>
                     <p>Edit Date</p>
                     <p>Comments</p>
-                    <p>Actions</p>
+                    <p class="actions-text">Actions</p>
                 </div>
                 <?php foreach ( $posts as $post ): 
                     
                         $postBody = explode("*%^sp^%*",$post['body']);
-                        $postSubArticleCount = count(explode("^%implode%^", $postBody[0]));
+                        $postSubArticleCount = count(explode("^%seperator%^", $postBody[0]));
                     ?>
                 <div class="single-post grid-layout">
                     <h3 class="post-title"><?php echo $post['title']; ?></h3>
                     <p class="post-body">Sub Articles: <?php echo $postSubArticleCount; ?></p>
                     <p class="post-category"><?php echo $post['category']; ?></p>
-                    <p class="post-comments"><?php echo $post['date'] ?></p>
-                    <p class="post-comments"><?php 
+                    <p class="post-date"><?php echo $post['date'] ?></p>
+                    <p class="post-edit-date"><?php 
                     
                     echo ( $post['edit_date'] != $post['date'] ) ? $post['edit_date'] : 'No edits';
                     

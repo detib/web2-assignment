@@ -187,6 +187,14 @@ footer {
   overflow-wrap: break-word;
 }
 
+.newsletter-button {
+  background: none;
+  outline: none;
+  border: none;
+  width: 28px;
+  height: 28px;
+}
+
 .news-input input {
   padding: .7em .7em;
   margin-top: .1em;
@@ -243,7 +251,7 @@ footer {
 
 .copyright {
   padding: 1.5em 0 .5em 0;
-  color: #001227;
+  color: #fff;
   text-align: center;
   font-weight: 700;
 }
