@@ -45,7 +45,6 @@
 
 <body>
     <?php include 'inc/navbar.php' ?>
-    <br>
     <div class='login-box'>
         <div class='form-title'>
             <h6>Log In</h6>

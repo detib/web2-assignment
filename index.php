@@ -67,7 +67,7 @@
             </div>
         <?php endforeach; ?>
         <?php else: ?>
-        <p>No posts yet</p>
+        <p style="padding-bottom: 334px;">No posts yet</p>
         <?php endif; ?>
     </div>
     <?php include 'inc/footer.php' ?>
