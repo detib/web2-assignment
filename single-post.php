@@ -41,17 +41,17 @@
     <div class="single-post-page">
         <div class="single-post">
             <div class="single-post-header">
-                <p class="date-created"><?php echo date("d-M-y",strtotime($post['date'])); ?></p>
+                <p class="date-created"><?= date("d-M-y",strtotime($post['date'])); ?></p>
                 <?php if ( $edit_date ): ?>
-                <p class="date-created">Last edit on: <?php echo date("d-M-y : H-i",strtotime($post['edit_date'])); ?></p>
+                <p class="date-created">Last edit on: <?= date("d-M-y : H-i",strtotime($post['edit_date'])); ?></p>
                 <?php endif; ?>
                 <div class="post-title-category">
-                    <h2 class="post-title"><?php echo $post['title']; ?></h2>
-                    <p class="post-category"><?php echo $post['category']; ?></p>
+                    <h2 class="post-title"><?= $post['title']; ?></h2>
+                    <p class="post-category"><?= $post['category']; ?></p>
                 </div>
             </div>
             <div class="image-container">
-                <img src="postImages/<?php echo $post['post_image']; ?>" alt="">
+                <img src="postImages/<?= $post['post_image']; ?>" alt="">
             </div>
             <div class="single-post-body">
                 <?php
@@ -62,8 +62,8 @@
                   foreach ( $postTitles as $key => $value ):
                 ?>
                 <div class="single-post-section">
-                    <h3 class="single-post-section-sub-title"><?php echo $value ?></h3>
-                    <p class="single-post-section-paragrah"><?php echo str_replace("^%break%^", "<br />",$postParagraphs[$key]); ?></p>
+                    <h3 class="single-post-section-sub-title"><?= $value ?></h3>
+                    <p class="single-post-section-paragrah"><?= str_replace("^%break%^", "<br />",$postParagraphs[$key]); ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -81,11 +81,11 @@
             <?php if ( $user ): ?>
             <div class="add-comment-container">
                 <div class="user-image-container">
-                    <img src="userImages/<?php echo $picture ?>" alt="">
+                    <img src="userImages/<?= $picture ?>" alt="">
                 </div>
                 <form class="comment-form" action="./config/addComent.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                    <input type="hidden" name="username" value="<?php echo $username; ?>">
+                    <input type="hidden" name="id" value="<?= $id; ?>">
+                    <input type="hidden" name="username" value="<?= $username; ?>">
                     <textarea placeholder="Enter your comment..." name="comment" id="" rows="3" required></textarea>
                     <input type="submit" value="Add Comment" name="submit">
                 </form>
@@ -105,9 +105,9 @@
             <div class="comment-container">
                 <div class="user-data-comment">
                     <div class="user-image-container">
-                        <img src="userImages/<?php echo $userPicture; ?>" alt="">
+                        <img src="userImages/<?= $userPicture; ?>" alt="">
                     </div>
-                    <p class="user-name"><?php echo $userName; ?></p>
+                    <p class="user-name"><?= $userName; ?></p>
                     <p class="post-time"><?php
 
                               $commentTime = strtotime( $comment['time'] );
@@ -123,7 +123,7 @@
                     ?></p>
                 </div>
                 <div class="comment-content">
-                    <p class="comment-text"><?php echo nl2br($comment['body']); ?></p>
+                    <p class="comment-text"><?= nl2br($comment['body']); ?></p>
                 </div>
             </div>
             <?php endforeach; ?>
