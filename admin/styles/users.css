@@ -5,15 +5,22 @@
   overflow-x: auto; /* we used overflow auto so that when there's content exceeding the width, a scroll bar will appear in the horizontal axis */
 }
 
-.grid-layout p:first-child, .grid-layout div:first-child {
+.grid-layout p:first-child,
+.grid-layout div:first-child {
   min-width: 150px;
 }
 
 .grid-layout > * {
+  /* this property is set to every direct child of grid-layout, nested childs do not take this property */
   min-width: 100px;
 }
 
-.field-names p:nth-child(5), .field-names p:nth-child(6), .field-names p:last-child, .user-username, .user-date-created, .button-actions {
+.field-names p:nth-child(5),
+.field-names p:nth-child(6),
+.field-names p:last-child,
+.user-username,
+.user-date-created,
+.button-actions {
   margin-left: 10px;
 }
 
@@ -35,7 +42,10 @@
   border-radius: inherit;
 }
 
-.user-name, .user-surname, .user-email, .user-username {
+.user-name,
+.user-surname,
+.user-email,
+.user-username {
   overflow-x: auto;
 }
 
@@ -57,18 +67,26 @@
 }
 
 .button-action-wrapper {
-  min-width: unset !important;
+  min-width: unset !important; /* unset the min-width that is previously set */
 }
 
 .button-actions {
   width: fit-content;
-  grid-column: span 2;
-  justify-self: flex-end;
+  grid-column: span 2; /* this makes the item span 2 columns inside a grid layout box */
+  justify-self: flex-end; /* this makes the item align itself to the right */
 }
 
-.approve, .delete {
-  padding: .75em;
-  transition: .3s;
+
+/* 
+ *
+ * these styles below are for the buttons on every user card,
+ * they set the padding, and the color of the buttons.
+ *
+ */
+.approve,
+.delete {
+  padding: 0.75em;
+  transition: 0.3s;
 }
 
 .approve {

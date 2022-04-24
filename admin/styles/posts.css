@@ -54,6 +54,8 @@
   padding: 1em;
 }
 
+
+/* these classes below are used for the posts page, more specific the buttons that are used to view, edit, or delete a post. */
 .view, .edit, .delete {
   padding: .75em;
   transition: .3s;

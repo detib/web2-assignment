@@ -28,6 +28,14 @@ if ( !isset( $_GET['user'] ) ) {
 // we sanitize the $_GET['user'] variable so that it is safe to use in the query, and store it in the $user variable
 $user = mysqli_real_escape_string($conn, $_GET['user']);
 
+// we create the query that will select the users profile picture from the database
+$query = "SELECT picture FROM users WHERE username = '$user'";
+$result = mysqli_query($conn, $query);
+$result = mysqli_fetch_assoc($result);
+// delete the photo from the folder
+unlink('../../userImages/'.$result['picture']);
+
+
 // write the query that changes the state of the user account to 1, meaning that the user is approved
 $query = "DELETE FROM users WHERE username = '$user'";
 

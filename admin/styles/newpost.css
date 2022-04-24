@@ -129,6 +129,8 @@
 }
 
 
+
+/* these classes are for the error box that is shown on the page when the user inserts an invalid file type, and also uses the animation below it. */
 #image-error-box {
   display: none;
   margin-top: 15px;

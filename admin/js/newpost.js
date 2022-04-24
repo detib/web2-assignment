@@ -67,7 +67,7 @@ photoInput.addEventListener('input', () => {
   // check if the file extension is not one of the allowed extensions
   console.log(fileExtension)
   if(fileExtension !== 'jpg' && fileExtension !== 'png' && fileExtension !== 'jpeg') {
-    // if the file is not an image, we empty the value so that the user cannot submit the form with the wrong file
+    // if the file is not an image, we empty the value so that the user cannot submit the form with the wrong file type
     photoInput.value = '';
     // if the file is not an image, we show the error box by changing the display property to block
     imageerrorbox.style.display = 'block';

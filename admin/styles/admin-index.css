@@ -21,7 +21,7 @@
 }
 
 .view-post-wrapper {
-  justify-self: flex-end;
+  justify-self: flex-end; /* aligns the button to the right of the flexbox that it sits */
 }
 
 .view-more-wrapper a {
@@ -66,11 +66,14 @@
 }
 
 .single-new-post {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  align-items: center;
+  display: grid; /* this property turns the box into a grid, it allows us to determine how many grid 'columns' we want so that we can easily stylize the posts page so that it seems like a table without actually being a table */
+  grid-template-columns: repeat(7, 1fr); 
+  /* ^^^  this property sets the grid columns, it is usually used like this, grid-template-columns: 1fr 1fr 1fr; this would split the box into three even columns,
+              but in order to not make the code redundant, we can use the shorthand property, repeat(n, 1fr) which is the same as writing 1fr n times,
+              so we can write grid-template-columns: repeat(7, 1fr); to make the box into a table with 7 columns */
+  align-items: center; /* aling items vertically in the center */
   background-color: #eee;
-  border-radius: inherit;
+  border-radius: inherit; /* the border radius is inherited from parent */
   padding: 1.5em 1em;
   gap: 15px;
   overflow-x: auto;
@@ -78,10 +81,10 @@
 
 .single-post-names {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 1fr); /* this also sets the grid box into 7 even columns */
 }
 
-.single-post-names p:nth-child(6) {
+.single-post-names p:nth-child(6) { /* select the 6th p tag inside .single-post-names */
   margin-left: 10px;
 }
 

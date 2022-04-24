@@ -10,18 +10,18 @@ page so that they are centered and appear one after the other vertically using f
 }
 
 .main-posts-container .single-post {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 50px 75px;
-  background-color: #f8f8f8;
+  display: flex; 
+  flex-direction: column; 
+  gap: 25px; /*  gap between the posts */
+  padding: 50px 75px; /* padding for the posts */
+  background-color: #f8f8f8; /* background color for the posts */
   box-shadow: 5px 5px 10px #ddd; /* box-shadow to make it appear as if its hovering over the page */
 }
 
 .single-post .single-post-header {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display: flex; /* making the container a flexbox for easier layouts */
+  flex-direction: column; /* making the flexbox direction a column, meaning elements will be in a vertical format */
+  gap: 5px; 
   padding-top: 10px;
 }
 
@@ -36,7 +36,7 @@ page so that they are centered and appear one after the other vertically using f
 
 .single-post .single-post-header .post-title-category {
   display: flex;
-  justify-content: space-between; /* gives a automatic space between the title and category of the post */
+  justify-content: space-between; /* gives a automatic space between the title and category of the post, we can use this property because display: flex is assigned */
   align-items: baseline; /* The items are aligned at the baseline of the vertical axis, meaning the items will align themselves so that the baseline of their text aligns to a horizontal line */
 }
 
@@ -72,8 +72,8 @@ page so that they are centered and appear one after the other vertically using f
   color: #1357bc;
   border-radius: 5px;
   padding: 5px 0;
-  cursor: pointer;
-  transition: 0.3s;
+  cursor: pointer; /* cursor: pointer makes the button look like a link, and changing the cursor of the user to the pointy finger */
+  transition: 0.3s; /* transition is used to make color change smooth */
   margin-bottom: 10px;
 }
 
@@ -90,10 +90,10 @@ page so that they are centered and appear one after the other vertically using f
   padding-bottom: 100px;
   margin-bottom: 100px;
   width: 750px;
-  margin: 75px auto 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+  margin: 75px auto 20px; /* 75px top margin, auto left and right, and 20px bottom margin */
+  display: flex; /* making the container a flexbox for easier layouts */
+  flex-direction: column; /* making the flexbox direction a column, meaning elements will be in a vertical format */
+  gap: 50px; /* gap between the flexbox elements */
 }
 
 .single-post-page .single-post {
@@ -113,7 +113,7 @@ page so that they are centered and appear one after the other vertically using f
 }
 
 .comment-container .user-data-comment .user-name {
-  flex: 1;
+  flex: 1; /* making the user name take up all the space available, flex is a shorthand for flex-grow, flex-shrink, and flex-basis */
 }
 
 .add-comment-container {
@@ -147,10 +147,10 @@ page so that they are centered and appear one after the other vertically using f
 
 .comment-form input[type='submit'] { /* instead of using classes or id, we access inputs by specifying their types */
   cursor: pointer;
-  align-self: flex-start; /* aligns the content in the beginning of the flex, or simply to the left */
+  align-self: flex-start; /* aligns this element in the beginning of the flexbox that it sits, or simply to the left */
   border: none;
   outline: none;
-  padding: 1em 2em;
+  padding: 1em 2em; /* padding for the input, em values are relative to the font-size of the element, which by default is 16px, this sets the padding to 16px top and bottom, and 32px left and right */
   border-radius: 10px;
   color: #fff;
   background: #1357bc;

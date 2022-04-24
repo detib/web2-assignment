@@ -69,7 +69,7 @@ are used for the same principle in the dashboard pages as well */
   margin: 0;
   font-size: 2.5em;
   font-weight: 100;
-  letter-spacing: 2px;
+  letter-spacing: 2px; /* change the spacing of the letters to 2px between each other */
 }
 
 /*---------- this section below of the navigation bar is used to create the hover effects that take place when 
@@ -90,7 +90,7 @@ the user hovers over the nav links. ::before selector inserts content before a s
 }
 
 .navigation .admin-link::after {
-  top: unset;
+  top: unset; /* unset the top property that is previously set. */
   bottom: -50px;
   box-shadow: 35px -35px 0 10px #e0e0e0;
 }
@@ -102,11 +102,11 @@ the user hovers over the nav links. ::before selector inserts content before a s
 
 .navigation .admin-link:hover::before,
 .navigation .admin-link:hover::after {
-  opacity: 1;
+  opacity: 1; /* on hover change the opacity of the before and after pseudo-elements */
 }
 
 /* when the user access' one of the dashboard pages through the navbar, the hover effect stays activated with 
-the help of javascript and the style below */
+the help of javascript and the utility classes below */
 .navigation .active {
   background: linear-gradient(to right, #c1daff, #e0e0e0) !important;
   color: #2a2185 !important;
