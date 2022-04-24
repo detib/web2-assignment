@@ -1,12 +1,13 @@
+/*---------- These styles are for the posts page ----------*/
 .main-wrapper {
-  --sidebar-width: 275px;
+  --sidebar-width: 275px; /* we used custom properties or variables */
 }
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(8, 1fr); /* this property allows us to determine how many grid 'columns' we want so that we can easily stylize the posts page so that it seems like a table without actually being a table */
   gap: 15px;
-  overflow-x: auto;
+  overflow-x: auto; /* we used overflow auto so that when there's content exceeding the width, a scroll bar will appear in the horizontal axis */
 }
 
 .grid-layout > * {
@@ -15,7 +16,7 @@
 
 .button-actions {
   width: fit-content;
-  grid-column: span 2;
+  grid-column: span 2; /* similar principle to column span when used in tables, the button-actions class will take the space of two columns */
   justify-self: flex-end;
 }
 

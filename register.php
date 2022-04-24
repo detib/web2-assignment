@@ -55,10 +55,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <link rel="stylesheet" href="styles/main.css"> Main pi prish dukjen e nav edhe footer qata e heka prej faqeve kryesore-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link all the css files that this page uses -->
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/inc.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/register.js" defer></script>
     <title>Coder | Register</title>
 </head>

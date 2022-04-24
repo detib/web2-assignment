@@ -1,25 +1,28 @@
+/*---------- These styles are for the admin (dashboard pages) ----------*/
 .main-wrapper {
   min-height: 100%;
-  --sidebar-width: 275px;
+  --sidebar-width: 275px; /* we used a variable here */
 }
 
 .main-content {
   min-height: 100vh;
   margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
+  width: calc(100% - var(--sidebar-width)); /* removes the navigation bar size from the width of the page so that it can make space for the dashboard navbar */
   padding: calc(1.5em + 32px) 1.5em 1.5em 1.5em;
   background: #e0e0e0;
-  z-index: 50;
+  z-index: 50; /* used so that the main-content always appears over other elements */
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
+/*---------- These styles are for the navigation bar in the dashboard pages ----------*/
+
 .navigation {
   top: 0;
   left: 0;
   bottom: 0;
-  position: fixed;
+  position: fixed; /* the postion of the dashboard navbar doesn't move, it always appears on the left side of the page */
   width: var(--sidebar-width);
   background-image: linear-gradient(to bottom, #0a2754, #0a2b5e, #093069, #093473, #09397e, #0a3d87, #0b4190, #0d4599, #0f49a2, #104eaa, #1252b3, #1357bc);
   display: flex;
@@ -29,8 +32,8 @@
   overflow: hidden;
 }
 
-.navigation .admin-link:first-child {
-    pointer-events: none;
+.navigation .admin-link:first-child { /* select the first-child of the parent .admin-link */
+  pointer-events: none;
 }
 
 .navigation .admin-link {
@@ -68,6 +71,7 @@
   letter-spacing: 2px;
 }
 
+/*---------- this section below of the navigation bar is used to create the hover effects that take place when the user hovers over the nav links ----------*/
 .navigation .admin-link::before,
 .navigation .admin-link::after {
   content: '';
@@ -136,7 +140,7 @@
 }
 
 .actions-text {
-  grid-column: span 2;
+  grid-column: span 2; /* take the space of two columns in the grid template */
   justify-self: flex-end;
 }
 
@@ -170,7 +174,7 @@
 }
 
 .button-actions {
-  justify-content: flex-end;
+  justify-content: flex-end; /* appear at the end of the flex display */
   display: flex;
   gap: 15px;
 }

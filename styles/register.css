@@ -1,3 +1,4 @@
+/*---------- These styles are used for the register or the sign up page ----------*/
 .signup-box {
   padding: 30px 25px 100px 25px;
   width: 800px;
@@ -17,7 +18,7 @@
 
 .signup-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Makes the content of the sign up form appear one after the other vertically */
 }
 
 .two-item-field {
@@ -31,7 +32,7 @@
   flex: 1;
 }
 
-.signup-form > * + * {
+.signup-form > * + * { /* the > selector is used to select elements where the parent is the .login-form class, while the * + * selectors are used to select the first element that comes after the first child element of the parent .login-form */
   margin-top: 15px;
 }
 
@@ -61,7 +62,7 @@
   outline: 2px solid #0a2754;
 }
 
-.signup-form input[type='submit'] {
+.signup-form input[type='submit'] { /* instead of using classes or id, we access inputs by specifying their types */
   cursor: pointer;
   outline: none;
   border: none;
@@ -78,7 +79,7 @@
 }
 
 .signup-form input[type='submit'][disabled] {
-  cursor: pointer;
+  pointer-events: none;
   outline: none;
   border: none;
   padding: 1em 0;
@@ -87,8 +88,4 @@
   color: #fff;
   font-size: 16px;
   transition: 1.25s;
-}
-
-.signup-form input[type='submit'][disabled] {
-  pointer-events: none;
 }

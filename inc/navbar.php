@@ -46,14 +46,14 @@
             <a href="logout.php">Sign Out</a>
         </div>
     </div>
-    <?php else: ?> <!-- if the user is not logged in then it will display the login and register links -->
+    <?php else: ?> <!-- the links below aren't functional. we used them solely so that the main nav-links would be centered in the nav even when the user shrinks the page horizontally -->
     <div class="nav-signedout">
         <ul class="nav-items">
             <li class="nav-link">
-                <a href="login.php">Log In</a>
+                <a href="#">Log In</a>
             </li>
             <li class="nav-link">
-                <a href="register.php">Register</a>
+                <a href="#">Register</a>
             </li>
         </ul>
     </div>
