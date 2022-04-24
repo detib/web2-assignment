@@ -24,7 +24,7 @@
 .two-item-field {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* sets whether flex items are forced onto one line or can wrap onto multiple lines, which in this case it is allowed */
   gap: 25px;
 }
 
@@ -74,10 +74,13 @@
   transition: 1.25s;
 }
 
+/* the box-shadow property is used to create the hover effect of the sign up button, 
+positive value goes left to right, while negative goes right to left */
 .signup-form input[type='submit']:hover {
   box-shadow: inset 800px 0 0 0 rgba(0, 0, 0, 0.1), inset -800px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
+/* below is the style of the sign up button when it is disabled */
 .signup-form input[type='submit'][disabled] {
   pointer-events: none;
   outline: none;

@@ -1,4 +1,5 @@
-/* this css file is used to stylize the login page and its content, mostly having to do with margins, paddings, widths, and font-sizes */
+/* this css file is used to stylize the login page and its content, mostly having to do with margins, 
+paddings, widths, and font-sizes */
 .login-box {
   padding: 10px 25px 75px 25px;
   width: 700px;
@@ -89,7 +90,8 @@
   box-shadow: inset 800px 0 0 0 rgba(0, 0, 0, 0.1), inset -800px 0 0 0 rgba(0, 0, 0, 0.1); /* when user hovers above the button, the hover-effect that takes place is made through the box-shadow property, which is the same principle we used for the nav-links in the navigation bar */
 }
 
-/* the not-active class is used to design the pop-up message that appears when a user is not active (admin has not approved the account) */
+/* the not-active class is used to design the pop-up message that appears when a user is not active 
+(admin has not approved the account) */
 .not-active {
   border-radius: 10px;
   background-color: #e4360f;
