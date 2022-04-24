@@ -28,6 +28,13 @@ if ( !isset( $_GET['post'] ) ) {
 // we sanitize the $_GET['post'] variable so that it is safe to use in the query, and store it in the $post variable
 $post = mysqli_real_escape_string($conn, $_GET['post']);
 
+// write and execute the query to get the photo from the database
+$query = "SELECT post_image FROM posts WHERE id = '$post'";
+$result = mysqli_query($conn, $query);
+$result = mysqli_fetch_assoc($result);
+// delete the photo from the folder
+unlink('../../postImages/'.$result['post_image']);
+
 // write the query that deletes the post from the posts table
 $query = "DELETE FROM posts WHERE id = '$post'";
 

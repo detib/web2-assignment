@@ -1,72 +1,68 @@
 <?php
 
-/*
- * 
- * this page is the page that we use to add new blog posts
- * 
- * first we require the necessary files
- * like the database, session and the admin files, which check for the user being logged in and if they are an admin
- * 
- */
+  /*
+   *
+   * this page is the page that we use to add new blog posts
+   *
+   * first we require the necessary files
+   * like the database, session and the admin files, which check for the user being logged in and if they are an admin
+   *
+   */
   require '../config/database.php';
   require '../config/session.php';
   require 'admin.php';
-
-  // we declare the variables that we will use in this page
-  $allowedExtensions = ['jpg', 'jpeg', 'png'];
-  $invalidFile = false;
 
   // check if a form has been submitted with the isset function and we check the $_POST submit key that is set in the form submit button.
   if ( isset( $_POST['submit'] ) ) {
 
     /*
-     * 
+     *
      * The way this form works is that it can be dynamic, we can add as many fields as we want to the form,
-     *   so the names of the fields in the html markup are like 'subtitle[]' and 'paragraph[]', what this does is that the key 
+     *   so the names of the fields in the html markup are like 'subtitle[]' and 'paragraph[]', what this does is that the key
      *     subtitle (for example) will be turned into an array of all the subtitles of the added inputs, and the same for paragraphs
-     *       so to store them in the database we join them into a single string and seperate the subtitles from the paragraphs 
+     *       so to store them in the database we join them into a single string and seperate the subtitles from the paragraphs
      *         with the special characterset (*%^sp^%*), and we do this for the subtitles too but we seperate them with the special characterset
      *           ^%seperator%^, as we do for the paragraphs.
-     * 
-     * When we want to query the database and select all of those posts, we seperate the body with the special charactersets and then we can display 
+     *
+     * When we want to query the database and select all of those posts, we seperate the body with the special charactersets and then we can display
      *   them properly in the html markup we desire.
-     * 
+     *
      */
 
     // store the title and body of the post in the variables $subtitles and $paragraphs
     $subtitles = $_POST['subtitle'];
     $paragraphs = $_POST['paragraph'];
 
-    // we loop through the $subtitles array and run a function that takes the breaks a user puts into the textarea 
+    // we loop through the $subtitles array and run a function that takes the breaks a user puts into the textarea
     //    and replaces them with a special string that we use to break the paragraphs (^%break%^)
     $paragraphs = array_map(
       function ( $item ) {
 
         // nl2br is a function that takes a string and replaces all the new lines with a break (<br />)
         $item = nl2br( $item );
-        // we use the str_replace function to replace the break with a special string since we will use the htmlentities function later on 
+        // we use the str_replace function to replace the break with a special string since we will use the htmlentities function later on
         //   to encode the special string
         return str_replace( "<br />", "^%break%^", $item );
       }, $paragraphs );
 
     /**
-     * 
-     * $subtitles is now an array of all the subtitles of the added inputs, 
+     *
+     * $subtitles is now an array of all the subtitles of the added inputs,
      *   so we join them into a single string and seperate them with the special characterset
-     * 
+     *
      * $paragraphs is now an array of all the paragraphs of the added inputs,
      *   so we join them into a single string and seperate them with the special characterset
      *     and we trim the paragraphs out of leading and trailing spaces
-     * 
+     *
      */
     $subtitles = implode( '^%seperator%^', $subtitles );
     $paragraphs = trim( implode( '^%seperator%^', $paragraphs ) );
 
     /**
-     * 
-     * 
-     * after we join them we sanitisize the inputs out of sql injections and htmlentities to make sure that the user cannot inject html or sql   
-     * 
+     *
+     *
+     * after we join them we sanitisize the inputs out of sql injections and htmlentities to make sure that the user cannot inject html or sql
+     *
      *                                                      v this is where we join the subtitles and paragraphs together with the special characterset
      */
     $body = htmlentities( mysqli_real_escape_string( $conn, "$subtitles *%^sp^%* $paragraphs" ) );
@@ -74,13 +70,13 @@
     $category = htmlentities( mysqli_real_escape_string( $conn, $_POST['category'] ) );
 
     /*
-     * 
+     *
      * get the file uploaded from the form submission
      * $file_name is the name of the file
      * $file_tmp_name is the temporary name of the file that is uploaded
      * $file_ext is the extension of the file that we get after we use the explode function to seperate the file name with the dot
      *    and then we use the end function to get the last item in the array which is the extension and store it in $file_ext
-     * 
+     *
      */
     $file_name = $_FILES['post-image']['name'];
     $file_tmp = $_FILES['post-image']['tmp_name'];
@@ -88,36 +84,29 @@
     $file_ext = strtolower( end( $file_ext ) );
 
     /*
-     * 
+     *
      * generate random id for the image to store in the database and access it with that id
      * we use the mt_rand function to generate a random number
      * we use the sha1 function to generate sha1 hash of the random number
      * we use the base64_encode function to encode the sha1 hash to a base64 string
      * we use the substr function to get the first 20 characters of the returned string and assign it to the $file_name variable
-     * 
+     *
      */
     $file_name = "post-img-" . substr( base64_encode( sha1( mt_rand() ) ), 0, 20 );
 
     // write the target directory where the image will be stored
     $target_dir = "../postImages/$file_name.$file_ext";
 
-    // check if the file is an image and has one of the allowed extensions that are in the $allowedExtensions array defined above
-    if ( in_array( $file_ext, $allowedExtensions ) ) {
-      move_uploaded_file( $file_tmp, $target_dir );
-    } else { // if not an image or not one of the allowed extensions then set the $invalidFile variable to true
-      $invalidFile = true;
-    }
+    // store the uploaded image in the target directory
+    move_uploaded_file( $file_tmp, $target_dir );
 
-    // if the $invalidFile variable is false then we can insert the data into the database
-    if ( !$invalidFile ) {
-      $sql = "INSERT INTO posts (title, body, category, post_image) VALUES ('$title', '$body', '$category', '$file_name.$file_ext')";
-      // execute the query and if it throws an error, the value will be falsey, and we can then display the error
-      if ( !mysqli_query( $conn, $sql ) ) {
-        echo 'Error: ' . mysqli_error( $conn );
-      }
-      // if the query is successful then we redirect the user to the index.php page
-      header( 'Location: index.php' );
+    $sql = "INSERT INTO posts (title, body, category, post_image) VALUES ('$title', '$body', '$category', '$file_name.$file_ext')";
+    // execute the query and if it throws an error, the value will be falsey, and we can then display the error
+    if ( !mysqli_query( $conn, $sql ) ) {
+      echo 'Error: ' . mysqli_error( $conn );
     }
+    // if the query is successful then we redirect the user to the posts.php page
+    header( 'Location: posts.php' );
 
   }
 ?>
@@ -153,7 +142,7 @@
             <h1 class="admin-title">New Post</h1>
             <div class="dashboard-box">
                 <!-- html form with the action to this page that we get through the $_SERVER superglobal and the method POST -->
-                <form class="new-post-form" action="<?= $_SERVER['PHP_SELF'] ?>" method="post"
+                <form class="new-post-form" action="<?=$_SERVER['PHP_SELF'] ?>" method="post"
                     enctype="multipart/form-data">
                     <div class="input-field">
                         <label class="new-post-title" for="title">Title</label>
@@ -162,17 +151,17 @@
                     <div class="body-of-post">
                         <h2 class="body-title">Body</h2>
                         <div id="body-fields-wrapper" class="body-fields-wrapper">
-                          <!-- through javascript we inject new html markup to the div below for extra input fields -->
+                            <!-- through javascript we inject new html markup to the div below for extra input fields -->
                             <div class="body-sub-title-paragraph">
                                 <div class="input-field">
-                                  <label for="title">Sub Title</label>
-                                  <!-- this is the subtitle input with the name that turns the $_POST key into an array -->
-                                  <input type="text" name="subtitle[]" id="title" required>
+                                    <label for="title">Sub Title</label>
+                                    <!-- this is the subtitle input with the name that turns the $_POST key into an array -->
+                                    <input type="text" name="subtitle[]" id="title" required>
                                 </div>
                                 <div class="input-field">
-                                  <label for="paragraph">Paragraph</label>
-                                  <!-- this is the paragraph input with the name that turns the $_POST key into an array -->
-                                  <textarea name="paragraph[]" id="paragraph" required></textarea>
+                                    <label for="paragraph">Paragraph</label>
+                                    <!-- this is the paragraph input with the name that turns the $_POST key into an array -->
+                                    <textarea name="paragraph[]" id="paragraph" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -195,8 +184,9 @@
                     </div>
                     <div class="input-field">
                         <label for="image">Image</label>
-                        <input type="file" name="post-image" id="image" required><span
-                            style="color: rgb(200,0,0);">.jpg, .jpeg, or .png files only</span>
+                        <input type="file" name="post-image" id="image" required>
+
+                        <p id="image-error-box">Please input a valid file! (.jpg, .jpeg, or .png files only)</p>
                     </div>
                     <div class="submit-field">
                         <input name="submit" type="submit" value="Create Post">
