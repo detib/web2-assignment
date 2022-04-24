@@ -1,3 +1,4 @@
+/*---------- These styles are for the new post page ----------*/
 .new-post-form {
   border-radius: inherit;
   display: flex;
@@ -38,10 +39,10 @@
   font-size: 1.1em;
 }
 
-.input-field input:not(input[type='file']),
+.input-field input:not(input[type='file']), /* instead of using classes or id, we access inputs by specifying their types, in this case it selects all input types except file types */
 .input-field textarea {
   resize: vertical;
-  border: 1px solid #1c59ff;
+  border: 1px solid #1d68da;
   border-radius: 5px;
   color: #040c21;
   padding: 3px;
@@ -55,7 +56,7 @@
 
 .body-buttons .add-more-button {
   cursor: pointer;
-  user-select: none;
+  user-select: none; /* this property controls whether or not the user can select text, which in this case the user cannot */
   align-self: flex-start;
   padding: 1em;
   border: none;
@@ -67,8 +68,8 @@
 }
 
 .body-buttons .remove-field {
-    background: #e4360f;
-    transition: .3s;    
+  background: #e4360f;
+  transition: .3s;    
 }
 
 .add-more-button:hover {
@@ -106,7 +107,7 @@
 .body-of-post {
   border-radius: inherit;
   padding: 1em 0.5em;
-  background: rgb(233, 233, 233);
+  background: #e9e9e9;
   display: flex;
   flex-direction: column;
   gap: 15px;

@@ -1,11 +1,12 @@
+/*---------- These styles are for the home page of the dashboard ----------*/
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr); /* this porperty allows us to determine how many grid 'columns' we want so that we can easily stylize the posts page so that it seems like a table without actually being a table */
   gap: 15px;
-  overflow-x: auto;
+  overflow-x: auto; /* we used overflow auto so that when there's content exceeding the width, a scroll bar will appear in the horizontal axis */
 }
 
-.grid-layout > *, .field-names > *, .single-new-post > * {
+.grid-layout > *, .field-names > *, .single-new-post > * { /* select all child elements of grid-layout, field-names, OR single-new-post */
   min-width: 100px;
 }
 
