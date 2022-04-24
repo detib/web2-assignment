@@ -55,6 +55,9 @@ removeFieldButton.addEventListener('click', () => {
 });
 
 
+
+// the block of code below is used for validating the input file type, so that we cannot enter a file that is not an image, and of the allowed extensions
+// it is used by the newpost form and the editpost form
 const imageerrorbox = document.getElementById('image-error-box')
 const photoInput = document.getElementById('image');
 
