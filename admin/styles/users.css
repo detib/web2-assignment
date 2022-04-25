@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr); /* this porperty allows us to determine how many grid 'columns' we want so that we can easily stylize the posts page so that it seems like a table without actually being a table */
   overflow-x: auto; /* we used overflow auto so that when there's content exceeding the width, a scroll bar will appear in the horizontal axis */
+  gap: 10px; /* this property allows us to set the gap between the grid items */
 }
 
 .grid-layout p:first-child,
@@ -27,7 +28,7 @@
 .all-users {
   background: #dadada;
   border-radius: 15px;
-  padding: 2em;
+  padding: 1em;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,12 +43,12 @@
   border-radius: inherit;
 }
 
-.user-name,
+/* .user-name,
 .user-surname,
 .user-email,
 .user-username {
   overflow-x: auto;
-}
+} */
 
 .user-username {
   font-weight: 600;

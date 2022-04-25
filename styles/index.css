@@ -43,6 +43,7 @@ page so that they are centered and appear one after the other vertically using f
 .single-post .single-post-header .post-title {
   font-size: 28px;
   font-weight: 700;
+  max-width: 70%;
 }
 
 .single-post .single-post-header .post-category {

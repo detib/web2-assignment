@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 05:39 AM
+-- Generation Time: Apr 26, 2022 at 01:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -29,38 +29,43 @@ USE `blog`;
 -- Table structure for table `comments`
 --
 
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `body` text NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `post_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+  `post_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `user`, `body`, `time`, `post_id`) VALUES
-(1, 'detib', 'This is the first comment\r\n', '2022-04-20 14:24:44', 6),
-(2, 'detib', 'This is the second comment\r\n', '2022-04-20 14:26:46', 6),
-(3, 'detib', 'This is the first good coment', '2021-04-20 14:28:02', 6),
-(4, 'detib', 'This is a good comment', '2022-04-20 16:04:07', 6),
-(5, 'user1', 'Test comment from another user', '2022-04-20 16:14:22', 6),
-(6, 'user4', 'Test from user4\r\n', '2022-04-20 16:15:22', 6),
-(7, 'user4', 'This is the first comment on this post', '2022-04-20 16:15:39', 5),
-(8, 'user4', 'This is the comment with breaks\r\nThis is a comment with breaks\r\nThis is a comment with breaks\r\n\r\nThis is a comment with breaks\r\n', '2022-04-20 16:16:26', 5),
-(9, 'detib', 'This is a comment with \r\nLine break', '2022-04-20 17:00:20', 10),
-(10, 'user1', 'jdsaiajdpsadpsaoj', '2022-04-20 17:17:37', 10),
-(11, 'user1', 'test\r\n\r\n\r\n\r\n', '2022-04-20 22:52:14', 11),
-(12, 'detib', 'Comment', '2022-04-21 02:42:05', 14),
-(13, 'detib', 'Comment2', '2022-04-21 02:42:13', 14),
-(14, 'detib', 'Comment', '2022-04-21 02:42:34', 13),
-(15, 'detib', 'Comment', '2022-04-21 02:42:39', 13),
-(16, 'detib', 'Comment', '2022-04-21 02:42:42', 13),
-(17, 'detib', 'Comment', '2022-04-21 02:42:45', 13),
-(18, 'detib', 'WTF', '2022-04-21 02:45:13', 15);
+(5, 'therealrock ', 'This is a great post.', '2022-04-25 22:06:57', 2),
+(6, 'twitterIsMineNow', 'This is a really great read.', '2022-04-25 22:07:31', 3),
+(9, 'therealrock ', 'Imho, it does not matter if the person is a 90\'s dev. They clearly missed the past few years of development in the JS ecosystem. It is true that many years ago JS was ugly and not scalable, however it grew. A lot. We have so many new ways to scale JS, so many ideas to workaround JS weaknesses and so many strong new features. It is best to tell people who probably don\'t know better to first go and research the topic. If they don\'t, try to keep away, because such people tend to be toxic.', '2022-04-25 22:56:56', 3),
+(10, 'JesseWeHaveToCook', 'People thinking that JS sucks:\r\n  1.Don\'t know JS\'s history\r\n  2.Don\'t know that JS matured a lot\r\n  3.They probably heard it from their role model, and they hate it too\r\n', '2022-04-25 23:00:11', 3),
+(11, 'JesseWeHaveToCook', 'This post really helped me find ways to improve my programming skills.\r\n\r\nGreat Post.', '2022-04-25 23:01:04', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`id`, `email`) VALUES
+(1, 'elonmusk@gmail.com'),
+(2, 'lebronjames@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -68,28 +73,24 @@ INSERT INTO `comments` (`id`, `user`, `body`, `time`, `post_id`) VALUES
 -- Table structure for table `posts`
 --
 
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `body` text NOT NULL,
   `category` varchar(255) NOT NULL DEFAULT 'general',
   `post_image` varchar(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `edit_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+  `edit_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `category`, `post_image`, `date`, `edit_date`) VALUES
-(13, 'Title', 'SUB TITLE BREAK FIXED^%implode%^SUB TITLE BREAK FIXEDSUB TITLE BREAK FIXED   *%^sp^%* PARAGRAPH BREAK FIXEDPARAGRAPH BREAK FIXED^%break%^\r\n^%break%^\r\nPARAGRAPH BREAK FIXED^%break%^\r\n^%break%^\r\nPARAGRAPH BREAK FIXED^%implode%^PARAGRAPH BREAK FIXEDPARAGRAPH BREAK FIXED^%break%^\r\nPARAGRAPH BREAK FIXEDPARAGRAPH BREAK FIXED^%break%^\r\nPARAGRAPH BREAK FIXEDPARAGRAPH BREAK FIXED^%break%^\r\nPARAGRAPH BREAK FIXEDPARAGRAPH BREAK FIXED', 'php', 'learnjs.jpeg', '2022-04-20 23:26:46', '2022-04-21 03:37:59'),
-(14, 'Main Title', 'Sub TITLE 1^%implode%^Sub TITLE 2  *%^sp^%* Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus odio, consequuntur similique dolor sunt esse quis? Doloribus atque perspiciatis, dolore rerum nihil doloremque. Minima, qui quia. Aliquam in, dolorum vitae sit provident quae sequi, recusandae minus quisquam perferendis hic quaerat magni illum ipsam maxime, eveniet consectetur! Provident hic sapiente beatae necessitatibus. Atque adipisci vitae iste minus! Ducimus, ullam aliquid deleniti tempora amet earum et necessitatibus nulla nam quam minima aliquam reiciendis impedit minus totam numquam quibusdam nisi id sed? Qui placeat tempore illo iure repellendus reprehenderit quasi alias quas, rem adipisci expedita nisi cupiditate itaque sequi omnis. Totam, provident inventore?^%break%^\n^%break%^\nLorem ipsum dolor sit amet consectetur adipisicing elit. Cum sit maxime ullam reprehenderit enim harum maiores quidem ab possimus, aperiam in sapiente beatae ducimus accusamus, numquam alias veritatis necessitatibus illum libero amet accusantium. Exercitationem culpa nostrum vitae id molestias assumenda.^%break%^\n^%break%^\n^%break%^\n^%break%^\n^%break%^\n^%break%^\n^%break%^\n^%break%^\n^%implode%^Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus temporibus reiciendis adipisci ipsum beatae aperiam obcaecati accusamus fugit blanditiis facere corporis ut aliquam unde, dignissimos eum omnis eligendi nisi alias dolorum. ^%break%^\nAliquam quasi consectetur labore vero cum sit pariatur, accusantium similique reprehenderit molestiae eveniet, repudiandae assumenda repellat animi temporibus repellendus, fuga recusandae dignissimos. Eos, velit aperiam harum minus blanditiis delectus. ^%break%^\n^%break%^\nDicta quidem ad magni corrupti delectus recusandae accusamus praesentium quia, in quas. Cumque est, iure tempora magnam necessitatibus possimus consectetur porro accusamus aspernatur amet in voluptates suscipit dignissimos nam delectus sapiente ipsam esse. ^%break%^\n^%break%^\nQuis, voluptatem amet vel dolores est doloremque consequatur deserunt sunt blanditiis modi velit sint. Aliquam ex vero odit sapiente quam optio laboriosam, explicabo officiis voluptates quidem iusto perferendis esse itaque facilis voluptatibus asperiores mollitia dolorem, commodi quae! ^%break%^\n^%break%^\nNihil sit harum nisi facilis labore quod velit repellat excepturi, dolorem quibusdam soluta at dolores inventore quo. Praesentium corrupti laudantium, rem eius fugit modi vel amet, corporis culpa, sequi quae dicta expedita porro nam laborum accusantium obcaecati omnis nemo vero consectetur maxime velit exercitationem. Ipsa expedita atque voluptate beatae eligendi vel sunt, quisquam tempore ex accusamus, molestiae perferendis cumque ullam laboriosam minus maxime temporibus, nulla facere laborum vitae in voluptatem.', 'html', 'post-img-YTMxYzI0NTVjYzIwMjkz.jpg', '2022-04-20 23:30:36', '2022-04-21 02:40:39'),
-(15, 'Test Post', 'Edited *%^sp^%* Edited', 'html', 'post-img-YTMxYzI0NTVjYzIwMjkz.jpg', '2022-04-21 02:44:53', '2022-04-21 03:37:31'),
-(16, 'Test Post', 'Test ssub title post *%^sp^%* Test sub paragraph Post', 'html', 'post-img-YTMxYzI0NTVjYzIwMjkz.jpg', '2022-04-21 03:18:21', '2022-04-21 03:37:36'),
-(17, 'Test Post', 'Test ssub title post *%^sp^%* Test sub paragraph Post', 'html', 'post-img-YTMxYzI0NTVjYzIwMjkz.jpg', '2022-04-21 03:19:33', '2022-04-21 03:37:43'),
-(18, 'Test', 'Test Sub 1^%implode%^Test2  *%^sp^%* Test^%implode%^Test2', 'html', 'post-img-YTMxYzI0NTVjYzIwMjkz.jpg', '2022-04-21 03:22:48', '2022-04-21 03:37:47');
+(1, 'How to improve your programming skills on your own', 'Reading Code^%seperator%^Set Aside Refactoring Time^%seperator%^Practice By Doing *%^sp^%* It goes without saying&hellip; If you want to be a better writer, you&rsquo;ve got to become a better reader &mdash; this means reading more books, as well as a wider range of books. There are plenty of books out there to help you become a better programmer &mdash; A popular book to get you started is The Pragmatic Programmer by David Thomas &amp; Andrew Hunt &mdash; but reading, in general, is really useful as it expands your mind.^%seperator%^I&rsquo;ll be honest, initially, I adopted the mindset of &ldquo;if it works, then it&rsquo;s good&rdquo;. Refactoring code always gets put off. In hindsight, it&rsquo;s actually quite daft. I would never publish an article without iterating over it once or twice to ensure I am conveying the messaging I wish to.^%break%^\r\n^%break%^\r\nOf course, code refactoring serves a different purpose. The purpose of refactoring code is to either make the code more efficient, more maintainable or both.^%break%^\r\n^%break%^\r\nTo become a better programmer, you must set aside time to refactor. To improve your refactoring skills, you must learn about refactoring &mdash; this will give you an idea of what to look for. Lastly, ensure you devote a lot of time refactoring code. You can revisit past projects or others people\'s projects and modify their code to make it more efficient, maintainable, or both.^%break%^\r\n^%seperator%^If you want to become a better writer, you have to write more. If you want to become a better cook, you have to cook more. If you want to become a better programmer, you have to write more programs.^%break%^\r\n^%break%^\r\nA little hack you could steal to write more programs is to start by writing lots of small programs. This will allow you to crank up the amount of code you&rsquo;re writing each day which would allow you to create a lot more programs.^%break%^\r\n^%break%^\r\nHowever, a large number of small programs would not cover the scope of programming skills required to be considered a good programmer. At some point, it&rsquo;s important to make the transition from writing lots of small programs to writing larger programs as this would reveal a new set challenges that would force you to become a better programmer.^%break%^\r\n^%break%^\r\nIf you think I&rsquo;ve left some ideas out leave a comment so we can continue to develop in unison.', 'javascript', 'post-img-ZDkyNDUzY2EzNTAxNjY5.jpg', '2022-04-25 21:54:29', '2022-04-25 21:54:29'),
+(2, 'Why is JavaScript so unpopular?', 'There are a lot of different opinions *%^sp^%* Hey developers,^%break%^\r\n^%break%^\r\nI recently met a 90\'s developer and we were having a casual conversation about tech. On him asking, what stack do we use in our company, I answered &quot;the JavaScript Stack&quot;.^%break%^\r\n^%break%^\r\nHe was shocked and replied: &quot;JavaScript is not scalable and you should consider rewriting the app to Python.&quot;^%break%^\r\n^%break%^\r\nWell, I told him all the popular apps which are built on JavaScript and he was like they all have some or other system which handles traffic separately and it\'s not JavaScript which is handling the traffic.^%break%^\r\n^%break%^\r\nI had to quit the conversation as it was a birthday ceremony and I didn\'t want any fight. :)^%break%^\r\n^%break%^\r\nWhy do you think people think bad about JavaScript?', 'javascript', 'post-img-OTc3NmI0MmFmYTY2Y2Y5.jpg', '2022-04-25 21:56:14', '2022-04-25 21:56:14'),
+(3, 'Why Python is not the programming language of the future', 'Pretty Slow^%seperator%^Scope^%seperator%^Runtime Errors *%^sp^%* Python is slow. Like, really slow. On average, you&rsquo;ll need about 2&ndash;10 times longer to complete a task with Python than with any other language.^%break%^\r\n^%break%^\r\nThere are various reasons for that. One of them is that it&rsquo;s dynamically typed &mdash; remember that you don&rsquo;t need to specify data types like in other languages. This means that a lot of memory needs to be used, because the program needs to reserve enough space for each variable that it works in any case. And lots of memory usage translates to lots of computing time.^%break%^\r\n^%break%^\r\nAnother reason is that Python can only execute one task at a time. This is a consequence of flexible datatypes &mdash; Python needs to make sure each variable has only one datatype, and parallel processes could mess that up.^%break%^\r\n^%break%^\r\nIn comparison, your average web browser can run a dozen different threads at once. And there are some other theories around, too.^%seperator%^Originally, Python was dynamically scoped. This basically means that, to evaluate an expression, a compiler first searches the current block and then successively all the calling functions.^%break%^\r\n^%break%^\r\nThe problem with dynamic scoping is that every expression needs to be tested in every possible context &mdash; which is tedious. That&rsquo;s why most modern programming languages use static scoping.^%break%^\r\n^%break%^\r\nPython tried to transition to static scoping, but messed it up. Usually, inner scopes &mdash; for example functions within functions &mdash; would be able to see and change outer scopes. In Python, inner scopes can only see outer scopes, but not change them. This leads to a lot of confusion.^%seperator%^A Python script isn&rsquo;t compiled first and then executed. Instead, it compiles every time you execute it, so any coding error manifests itself at runtime. This leads to poor performance, time consumption, and the need for a lot of tests. Like, a lot of tests.^%break%^\r\n^%break%^\r\nThis is great for beginners since testing teaches them a lot. But for seasoned developers, having to debug a complex program in Python makes them go awry. This lack of performance is the biggest factor that sets a timestamp on Python.', 'python', 'post-img-ZTJlNzdkODQwNGQyZGQ0.jpg', '2022-04-25 21:58:23', '2022-04-25 21:58:23');
 
 -- --------------------------------------------------------
 
@@ -97,8 +98,8 @@ INSERT INTO `posts` (`id`, `title`, `body`, `category`, `post_image`, `date`, `e
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -107,22 +108,78 @@ CREATE TABLE IF NOT EXISTS `users` (
   `picture` varchar(255) NOT NULL,
   `role` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = user, 1 = admin',
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `username`, `password`, `picture`, `role`, `is_active`, `date_created`) VALUES
-(1, 'Deti', 'Baholli', 'deti@gmail.com', 'detib', 'OpvyoDPvmkL5uQcEDb914w==', 'default.png', 1, 1, '2022-04-19 14:40:47'),
-(8, 'user1', 'user1', 'user1@user.com', 'user1', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:17:17'),
-(9, 'user2', 'user2', 'user2@user.com', 'user2', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:17:45'),
-(10, 'user3', 'user3', 'user3@user.com', 'user3', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:18:05'),
-(11, 'user4', 'user4', 'user4@gmail.com', 'user4', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:18:22'),
-(12, 'user5', 'user5', 'user5@user.com', 'user5', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:18:48'),
-(13, 'user6', 'user6', 'user6@user.com', 'user6', '3ySAIsRx95OYktRKdKieOg==', 'default.png', 0, 1, '2022-04-19 22:19:12');
+(1, 'Deti', 'Baholli', 'deti@gmail.com', 'detib', 'OpvyoDPvmkL5uQcEDb914w==', 'profile-pic-OGMxNTdlZjVhMDIwODA0.png', 1, 1, '2022-04-25 21:35:17'),
+(2, 'John', 'Cena', 'johncena@gmail.com', 'youcantseeme', 'Wu7JFaF0Hs8QYjy4grkWsA==', 'profile-pic-NGQwNzJiMjcxODM5MDg2.jpg', 0, 0, '2022-04-25 21:38:33'),
+(3, 'Dwayne', 'Johnson', 'therock@gmail.com', 'therealrock ', '9ns+gIcSEVmJerGLEWqB8w==', 'profile-pic-MjU4N2NlZDc4YWFmM2M2.jpg', 0, 1, '2022-04-25 21:41:57'),
+(4, 'Jesse', 'Pinkman', 'jessepinkman@gmail.com', 'JesseWeHaveToCook', 'uiZJ/cqbOyv13LCNvpdWew==', 'profile-pic-NmZlNTc0NmNlYmFiYjRl.jpg', 0, 1, '2022-04-25 21:42:33'),
+(5, 'Elon', 'Musk', 'elonmusk@gmail.com', 'twitterIsMineNow', 'z2frz244LA9lmVrYz4hBZQ==', 'profile-pic-YjhiM2Y3MmU1YjBlOWQx.jpg', 0, 1, '2022-04-25 21:44:23'),
+(6, 'LeBron', 'James', 'lebronjames@gmail.com', 'KingJames', 'j7p7sbUkaoC8BJdsU+Cwow==', 'profile-pic-MmQ1OWUwZjUyNzVlNGI3.jpg', 0, 0, '2022-04-25 21:45:07'),
+(7, 'Donat', 'Kusari', 'donat@gmail.com', 'donatk', 'xvsjuJjCOskCMGXDJKW3MA==', 'default.png', 0, 0, '2022-04-25 21:49:22');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

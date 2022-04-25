@@ -111,7 +111,7 @@
                 <form class="comment-form" action="./config/addComent.php" method="post">
                     <input type="hidden" name="id" value="<?= $id; ?>"> <!-- the id of the post -->
                     <input type="hidden" name="username" value="<?= $username; ?>"> <!-- the username of the user -->
-                    <textarea placeholder="Enter your comment..." name="comment" id="" rows="3" required></textarea> <!-- body of the comment -->
+                    <textarea placeholder="Enter your comment..." name="comment" required></textarea> <!-- body of the comment -->
                     <input type="submit" value="Add Comment" name="submit"> <!-- submit button of the form -->
                 </form>
             </div>

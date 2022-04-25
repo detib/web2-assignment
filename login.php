@@ -94,7 +94,7 @@
         <div class='form-field not-active'>
             <p><?= $accountActiveError; ?></p> <!-- in the else clause at the login handler above we change the value of the variable to a text, the error text, we output that here -->
         </div>
-        <div class="login-with-another-acc">
+        <div class="login-with-another-acc" style="padding-bottom: 100px;">
             <a href="login.php">Login with another account</a>
         </div>
         <?php endif; ?> <!-- endif statement to end the whole if statement -->

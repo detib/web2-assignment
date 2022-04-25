@@ -18,7 +18,7 @@ if(!$user || !isset($_POST['submit'])) { // check if not a user or no post has b
 }
 
 $commentUser = $_POST['username']; // store the username in a variable
-$comment = $_POST['comment']; // store the comment in a variable
+$comment = mysqli_real_escape_string($conn, $_POST['comment']); // store the comment in a variable // THIS IS THE CHANGED LINE
 $post_id = $_POST['id']; // store the post id in a variable
 
 $query = "INSERT INTO 
@@ -26,6 +26,7 @@ $query = "INSERT INTO
     VALUES ('$commentUser', '$comment', '$post_id')"; // query insert the comment into the database
 
 $result = mysqli_query($conn, $query); // execute the query
-header('Location: ../single-post.php?id=' . $post_id); // redirect to the single post page with the post id
+header('Location: ../single-post.php?id=' . $post_id); 
+// redirect to the single post page with the post id
 
 ?>
