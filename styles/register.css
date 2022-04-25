@@ -92,3 +92,33 @@ positive value goes left to right, while negative goes right to left */
   font-size: 16px;
   transition: 1.25s;
 }
+
+#register-error-box {
+  display: none;
+  margin-top: 15px;
+  padding: 1em 2em;
+  border-radius: 15px;
+  width: fit-content;
+  background: #e4360f;
+  color: #fff;
+  animation: shake .5s;
+}
+
+
+@keyframes shake {
+  0% {
+    transform: translateX(5px);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

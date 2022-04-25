@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="body-buttons">
+                        <div class="body-buttons"> <!-- buttons that we added, and we handle the clicks events with javascript -->
                             <div id="add-another-field" class="add-more-button">Add Another Field</div>
                             <div id="remove-field" class="add-more-button remove-field">Remove Field</div>
                         </div>
@@ -184,8 +184,7 @@
                     </div>
                     <div class="input-field">
                         <label for="image">Image</label>
-                        <input type="file" name="post-image" id="image" required>
-
+                        <input type="file" name="post-image" id="image" required> <!-- this input is required since we didn't make it possible to add a post without a photo -->
                         <p id="image-error-box">Please input a valid file! (.jpg, .jpeg, or .png files only)</p>
                     </div>
                     <div class="submit-field">

@@ -56,55 +56,73 @@
         <div class="main-content">
             <?php
 
+                // Here we grab the $_POST method which is sent from this script after the form has been submitted. 
+                // We check for the $_POST['submit'] because we have the name on the submit button 'submit'
               if ( isset( $_POST['submit'] ) ) {
 
+                // Here we grab the post id that is in the input hidden field.
                 $post_id = $_POST['post-id'];
+
+                // Here we grab the sutitles and the body of the post.
+                // and also run the same functions as the script that adds new posts. In order to save the data in the database in the same way that we add posts.
+                
                 $subtitles = $_POST['subtitle'];
                 $paragraphs = $_POST['paragraph'];
+                // we map through the array of paragraphs that are type textarea input
                 $paragraphs = array_map(
                   function ( $item ) {
-
+                    // we use the nl2br function to replace the new line characters with <br />
                     $item = nl2br( $item );
+                    // then we return the item but also replacing the <br /> 
+                    //    with the special characters that are used to add the <br /> to the html markup but not allow any other type of html elements.
                     return str_replace( "<br />", "^%break%^", $item );
-                  }, $paragraphs );
+                  }, $paragraphs ); // array map takes 2 parameters, the function that runs on every item, and the array that we want to map through.
+                //   after that we use the implode function to join the array of paragraphs with the special character set in order to know how to seperate them when we display them in the html markup.
                 $subtitles = implode( '^%seperator%^', $subtitles );
-                $paragraphs = trim( implode( '^%seperator%^', $paragraphs ) );
+                $paragraphs = trim( implode( '^%seperator%^', $paragraphs ) ); // trim to remove leading and trailing whitespace.
 
+                // we join the body in the same string, that we use to seperate,
+                //    and we run them through the htmlentities function, and the mysqli_real_escape_string function, to defend against sql injection, or script injections.
+                // we run the title and the category through the same functions to defend against sql injection, or script injections.
                 $body = htmlentities( mysqli_real_escape_string( $conn, "$subtitles *%^sp^%* $paragraphs" ) );
                 $title = htmlentities( mysqli_real_escape_string( $conn, $_POST['title'] ) );
                 $category = htmlentities( mysqli_real_escape_string( $conn, $_POST['category'] ) );
 
-                // we check the $_FILES superglobal for the 0 error, which means no file was uploaded,
+                // we check the $_FILES superglobal for the 0 error, which means no file was uploaded, 
+                //   in the edit post script, the file is optional, since we may want to not change the file
                 //   and if it is, we save the file details to variables so that we can use them later to store in the database
                 if ( $_FILES['post-image']['error'] == 0 ) {
                   // get the file uploaded from the form submission
+                  // get the file details, like the name, extension, temp location and store them in variables.
                   $file_name = $_FILES['post-image']['name'];
                   $file_tmp = $_FILES['post-image']['tmp_name'];
-                  $file_ext = explode( '.', $file_name );
-                  $file_ext = strtolower( end( $file_ext ) );
+                  $file_ext = explode( '.', $file_name ); // explode is a function to seperate a string into an array by a delimiter.
+                  $file_ext = strtolower( end( $file_ext ) ); // we take only the end of the array, which is the extension of the file.
 
                   // generate id for the image, just like in the newpost.php script, to store in the database and access it with that id
                   $file_name = "post-img-" . substr( base64_encode( sha1( mt_rand() ) ), 0, 20 );
-                  $target_dir = "../postImages/$file_name.$file_ext";
-                  move_uploaded_file( $file_tmp, $target_dir );
-
-                } else {
+                  $target_dir = "../postImages/$file_name.$file_ext"; // the target directory, and the name of the file. the target directory is the postImages folder in the root directory.
+                  move_uploaded_file( $file_tmp, $target_dir ); // move the file to that directory (save it).
+                } else { // this else will run if the file was not uploaded, and we will change the sql query to not include the image column.
                   $file_name = NULL;
                 }
 
+                // we use the ternary operator to check if the file name is null, if it is, we will not include the image column in the sql query.
                 $sql = $file_name ?
                 "UPDATE posts SET title = '$title', body = '$body', category = '$category', post_image = '$file_name.$file_ext' WHERE id = $post_id" :
                 "UPDATE posts SET title = '$title', body = '$body', category = '$category' WHERE id = $post_id";
-                if ( $file_name ) {
+                // this is done so if the file is changed we delete the old image from the postImages folder.
+                if ( $file_name ) { 
+                    // first we query the database for the image name.
                   $query = mysqli_query( $conn, "SELECT post_image FROM posts WHERE id = $post_id" );
-                  $image = mysqli_fetch_assoc( $query );
-                  $image = $image['post_image'];
-                  unlink( "../postImages/$image" );
+                  $image = mysqli_fetch_assoc( $query );  // fetch the row
+                  $image = $image['post_image']; // get the image name from the array
+                  unlink( "../postImages/$image" ); // delete the image from the postImages folder
                 }
-                if ( !mysqli_query( $conn, $sql ) ) {
+                if ( !mysqli_query( $conn, $sql ) ) { // we execute the query and check if it is true or false. It will be false when it throws an error. If it does we echo it.
                   echo 'Error: ' . mysqli_error( $conn );
                 }
-                header( "Location: posts.php" );
+                header( "Location: posts.php" ); // redirect the user to the posts page.
 
               }
 
@@ -119,7 +137,7 @@
                 // fetch the data in an associative array
                 $post = mysqli_fetch_assoc( $result );
 
-                // put the data into variables for easier access
+                // put the data that is returned from the query into variables for easier access
                 $title = $post['title'];
                 $category = $post['category'];
                 $post_image = $post['post_image'];
@@ -204,7 +222,7 @@
                             </div>
                             <?php endforeach ?> <!-- end the form sub-articles inputs foreach loop here -->
                         </div>
-                        <div class="body-buttons">
+                        <div class="body-buttons"> <!-- these are the buttons, we added id's to them since we use javascript to handle the click events -->
                             <div id="add-another-field" class="add-more-button">Add Another Field</div>
                             <div id="remove-field" class="add-more-button remove-field">Remove Field</div>
                         </div>

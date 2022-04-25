@@ -153,3 +153,26 @@ const validateInputs = () => {
     submit.disabled = false;
   }
 };
+
+
+// the block of code below is used for validating the input file type, so that we cannot enter a file that is not an image, and of the allowed extensions
+// it is used by the register form
+const imageerrorbox = document.getElementById('register-error-box')
+const photoInput = document.getElementById('profile-image');
+
+photoInput.addEventListener('input', () => {
+  // get the file extension by splitting the file name with the dot and getting the last element of the array, storing it in the const fileExtension
+  const fileExtension = photoInput.value.split('.').pop();
+  // check if the file extension is not one of the allowed extensions
+  console.log(fileExtension)
+  if(fileExtension !== 'jpg' && fileExtension !== 'png' && fileExtension !== 'jpeg') {
+    // if the file is not an image, we empty the value so that the user cannot submit the form with the wrong file type
+    photoInput.value = '';
+    // if the file is not an image, we show the error box by changing the display property to block
+    imageerrorbox.style.display = 'block';
+    // we set a timeout to hide the error box after 3 seconds, we use the setTimeout method to call a function after a certain amount of time
+    setTimeout(() => {
+      imageerrorbox.style.display = 'none';
+    }, 2500);
+  }
+})
