@@ -39,7 +39,7 @@
     <?php if ( $user ): ?>
     <div class="user">
         <!-- we echo the username -->
-        <a href="$"><?= $username; ?></a>
+        <a href="#"><?= $username; ?></a>
         <!-- we echo the image name and extension that is saved in the session variables, that we originally fetch from the database after a successful login -->
         <div class="profile-pic"><a href="#"><img src="userImages/<?= $picture ?>" alt=""></a></div>
         <div class="user-dropdown">
