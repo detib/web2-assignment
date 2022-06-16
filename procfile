@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-web: vendor\bin\heroku-php-apache2
-=======
-web: vendor/bin/heroku-php-apache2
->>>>>>> 863baf2 (herokutesting)
-=======
-web: vendor\bin\heroku-php-apache2
->>>>>>> fed17de (heroku-testing)
