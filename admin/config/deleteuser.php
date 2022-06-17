@@ -31,7 +31,11 @@ $user = mysqli_real_escape_string( $conn, $_GET['user'] );
 $query = "SELECT picture FROM users WHERE username = '$user'";
 $result = mysqli_query( $conn, $query );
 $result = mysqli_fetch_assoc( $result );
+$result = $result['picture'];
 // delete the photo from the folder
+
+print_r( $result );
+
 if ( $result != 'default.png' ) {
   unlink( '../../userImages/' . $result['picture'] );
 }
